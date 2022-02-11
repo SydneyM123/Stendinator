@@ -1,37 +1,36 @@
 ﻿using Stendinator.Core.Levels;
 using Stendinator.Core.Levels.Factories;
+using System;
 
 namespace Stendinator.Core
 {
-    public class Game
+    internal class Game
     {
-        private Level? _level;
-        private ILevelFactory _levelFactory;
+        private Planet _currentPlanet;
+        private IRandomPlanetFactory _randomPlanetFactory;
+
         private int[] Stages { get; set; }
 
-        public Game(ILevelFactory levelFactory)
+
+        public Game(IRandomPlanetFactory levelFactory)
         {
-            _level = null;
-            _levelFactory = levelFactory;
+            _currentPlanet = null;
+            _randomPlanetFactory = levelFactory;
         }
 
-        public void LevelIsBeaten(object? sender, EventArgs args)
+        public void PlanetIsBeaten(object sender, EventArgs args)
         {
             //Remove current level
-            if (_level != null)
-                _level.LevelIsBeaten -= LevelIsBeaten;
+            if (_currentPlanet != null)
+                _currentPlanet.PlanetIsBeaten -= PlanetIsBeaten;
             CreateNewLevel();
         }
 
         public void CreateNewLevel()
         {
             //Generate new level
-            _level = _levelFactory.Create(new RandomLevelFactoryModel
-            {
-                NumberOfEnemies = 0,
-                FightState = new FightState()
-            });
-            _level.LevelIsBeaten += LevelIsBeaten;
+            _currentPlanet = _randomPlanetFactory.Create(0);
+            _currentPlanet.PlanetIsBeaten += PlanetIsBeaten;
         }
     }
 }
