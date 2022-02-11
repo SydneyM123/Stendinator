@@ -1,7 +1,7 @@
 # Stendinator
 A game where you fight aliens and robots!
 
-Toegepast design patterns:
+Toegepaste design patterns:
 
 - Decorator pattern
 - Factory method
