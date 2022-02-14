@@ -24,19 +24,34 @@ namespace Stendinator.Core.Creatures
         /// Adds a component to the entity and if a usable component is added it will be linked to the HandleUsedComponent method.
         /// </summary>
         /// <param name="component">The component to be added</param>
-        public void AddComponent(Component component)
+        protected void AddComponent(Component component)
         {
             var componentList = Components.ToList();
             componentList.Add(component);
             Components = componentList.ToArray();
-            if (component is ActiveComponent uc) uc.Used += HandleUsedComponent;
+            if (component is ActiveComponent activeComponent) activeComponent.Used += HandleUsedComponent;
+        }
+
+        /// <summary>
+        /// Removes the specified component
+        /// </summary>
+        /// <param name="component">The component to be removed</param>
+        protected void RemoveComponent(Component component)
+        {
+            var componentList = Components.ToList();
+            if (componentList.Remove(component))
+            {
+                if (component is ActiveComponent activeComponent)
+                    activeComponent.Used -= HandleUsedComponent;
+            };
+            Components = componentList.ToArray();
         }
 
         /// <summary>
         /// The consequences the focused entity will be dealing with.
         /// </summary>
-        /// <param name="uc">The component that has been used</param>
-        /// <param name="e">Specific values the component has influence on</param>
-        protected abstract void HandleUsedComponent(ActiveComponent uc, ComponentUsedArgs e);
+        /// <param name="activeComponent">The component that has been used</param>
+        /// <param name="args">Specific values the component has influence on</param>
+        protected abstract void HandleUsedComponent(ActiveComponent activeComponent, ComponentUsedArgs args);
     }
 }

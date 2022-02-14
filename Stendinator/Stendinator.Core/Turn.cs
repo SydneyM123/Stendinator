@@ -3,6 +3,6 @@
     internal enum Turn
     {
         Player,
-        Computer
+        Enemy
     }
 }

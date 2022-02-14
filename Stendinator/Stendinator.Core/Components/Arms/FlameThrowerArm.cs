@@ -3,7 +3,7 @@ using Stendinator.Core.CreatureStats;
 
 namespace Stendinator.Core.Robots.Arms
 {
-    internal class FlameThrowerArm : ActiveComponent
+    public sealed class FlameThrowerArm : ActiveComponent
     {
         public override void Use()
         {

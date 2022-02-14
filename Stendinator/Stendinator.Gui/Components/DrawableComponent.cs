@@ -1,4 +1,5 @@
 ﻿using Stendinator.Core.Components;
+using Windows.UI.Xaml.Shapes;
 
 namespace Stendinator.Gui.Components
 {
@@ -13,7 +14,8 @@ namespace Stendinator.Gui.Components
 
         public int X { get; set; }
         public int Y { get; set; }
+        public DrawArea DrawArea { get; set; }
 
-        public abstract void Draw();
+        public abstract Shape Draw();
     }
 }

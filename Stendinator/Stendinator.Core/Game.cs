@@ -1,4 +1,5 @@
-﻿using Stendinator.Core.Levels;
+﻿using Stendinator.Core.Creatures;
+using Stendinator.Core.Levels;
 using Stendinator.Core.Levels.Factories;
 using System;
 
@@ -8,6 +9,7 @@ namespace Stendinator.Core
     {
         private Planet _currentPlanet;
         private IRandomPlanetFactory _randomPlanetFactory;
+        private Creature _player;
 
         private int[] Stages { get; set; }
 

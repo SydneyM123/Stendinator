@@ -2,6 +2,6 @@
 {
     internal class GameState
     {
-        public Turn IsPlayersTurn { get; set; }
+        public Turn Turn { get; set; }
     }
 }
