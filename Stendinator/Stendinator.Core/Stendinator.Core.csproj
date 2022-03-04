@@ -131,7 +131,6 @@
     <Compile Include="Creatures\Factories\RandomAlienFactory.cs" />
     <Compile Include="Creatures\Factories\RandomCyborgFactory.cs" />
     <Compile Include="Creatures\Factories\IRandomCreatureFactory.cs" />
-    <Compile Include="Creatures\Cyborgs\CyborgImp.cs" />
     <Compile Include="GameState.cs" />
     <Compile Include="CreatureStats\InfluentialStats.cs" />
     <Compile Include="Components\ActiveComponent.cs" />
