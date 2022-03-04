@@ -120,7 +120,9 @@
     <RestoreProjectStyle>PackageReference</RestoreProjectStyle>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="Components\Targets\Entity.cs" />
     <Compile Include="Components\Factories\IComponentFactory.cs" />
+    <Compile Include="Components\Targets\Target.cs" />
     <Compile Include="CreatureStats\CreatureStats.cs" />
     <Compile Include="CreatureControllers\ICreatureController.cs" />
     <Compile Include="CreatureControllers\RandomCreatureController.cs" />

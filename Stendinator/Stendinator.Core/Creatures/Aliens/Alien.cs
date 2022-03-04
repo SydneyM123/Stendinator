@@ -1,5 +1,6 @@
 ﻿using Stendinator.Core.Components;
 using System;
+using Stendinator.Core.Components.Targets;
 
 namespace Stendinator.Core.Creatures.Aliens
 {

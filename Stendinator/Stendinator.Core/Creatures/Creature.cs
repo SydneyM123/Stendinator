@@ -1,5 +1,6 @@
 ﻿using Stendinator.Core.Components;
 using System.Linq;
+using Stendinator.Core.Components.Targets;
 
 namespace Stendinator.Core.Creatures
 {

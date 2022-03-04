@@ -1,4 +1,4 @@
-﻿using Stendinator.Core.CreatureStats;
+﻿using Stendinator.Core.Components.Targets;
 
 namespace Stendinator.Core.Components
 {
@@ -14,14 +14,5 @@ namespace Stendinator.Core.Components
         {
             ComponentActivated?.Invoke(this, e);
         }
-    }
-
-    public abstract class Target
-    {
-    }
-
-    internal class Entity : Target
-    {
-        public InfluentialStats Consequences { get; set; }
     }
 }

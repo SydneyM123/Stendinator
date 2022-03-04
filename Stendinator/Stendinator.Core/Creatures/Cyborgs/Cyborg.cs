@@ -1,4 +1,5 @@
 ﻿using Stendinator.Core.Components;
+using Stendinator.Core.Components.Targets;
 
 namespace Stendinator.Core.Creatures.Cyborgs
 {
@@ -58,7 +59,7 @@ namespace Stendinator.Core.Creatures.Cyborgs
             oldComponent = newComponent;
         }
 
-        protected override void HandleComponentActivatedComponent(ActiveComponent activeComponent, Target args)
+        protected override void HandleActivatedComponent(ActiveComponent activeComponent, Target args)
         {
             //Handle components used on Target entity
         }
