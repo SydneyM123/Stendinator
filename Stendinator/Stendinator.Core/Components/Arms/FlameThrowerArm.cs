@@ -1,13 +1,12 @@
-﻿using Stendinator.Core.Components;
-using Stendinator.Core.CreatureStats;
+﻿using Stendinator.Core.CreatureStats;
 
-namespace Stendinator.Core.Robots.Arms
+namespace Stendinator.Core.Components.Arms
 {
     public sealed class FlameThrowerArm : ActiveComponent
     {
-        public override void Use()
+        public override void Activate()
         {
-            RaiseUsedEvent(new ComponentUsedOnEntityArgs
+            RaiseActivatedEvent(new Entity
             {
                 Consequences = new InfluentialStats
                 {

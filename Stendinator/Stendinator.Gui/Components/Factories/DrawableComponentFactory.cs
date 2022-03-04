@@ -1,7 +1,7 @@
 ﻿using Stendinator.Core.Components;
 using Stendinator.Core.Components.Factories;
-using Stendinator.Core.Robots.Arms;
 using System;
+using Stendinator.Core.Components.Arms;
 
 namespace Stendinator.Gui.Components.Factories
 {

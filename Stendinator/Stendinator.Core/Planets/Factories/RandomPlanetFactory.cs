@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Stendinator.Core.Levels.Factories
+namespace Stendinator.Core.Planets.Factories
 {
     internal class RandomPlanetFactory : IRandomPlanetFactory
     {

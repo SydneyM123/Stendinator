@@ -5,11 +5,11 @@ namespace Stendinator.Core.Creatures.Aliens
 {
     internal class Alien : Creature
     {
-        protected override void HandleUsedComponent(ActiveComponent uc, ComponentUsedArgs e)
+        protected override void HandleComponentActivatedComponent(ActiveComponent uc, Target e)
         {
-            if (e is ComponentUsedOnEntityArgs entityArgs)
+            if (e is Entity entityArgs)
             {
-                Focused.Health -= entityArgs.Consequences.HealthDecrease;
+                Target.Health -= entityArgs.Consequences.HealthDecrease;
             }
 
             throw new NotImplementedException();

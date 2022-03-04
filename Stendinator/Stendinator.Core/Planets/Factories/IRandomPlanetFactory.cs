@@ -1,4 +1,4 @@
-﻿namespace Stendinator.Core.Levels.Factories
+﻿namespace Stendinator.Core.Planets.Factories
 {
     internal interface IRandomPlanetFactory
     {

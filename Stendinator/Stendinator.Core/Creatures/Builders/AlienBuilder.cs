@@ -2,5 +2,9 @@
 {
     internal class AlienBuilder : ICreatureBuilder
     {
+        public Creature GetCreature()
+        {
+            throw new System.NotImplementedException();
+        }
     }
 }

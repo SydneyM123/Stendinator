@@ -126,16 +126,17 @@
     <Compile Include="CreatureControllers\RandomCreatureController.cs" />
     <Compile Include="Creatures\Aliens\Alien.cs" />
     <Compile Include="Creatures\Builders\AlienBuilder.cs" />
-    <Compile Include="Creatures\Factories\RandomCreatureFactory.cs" />
+    <Compile Include="Creatures\Factories\RandomAlienFactory.cs" />
+    <Compile Include="Creatures\Factories\RandomCyborgFactory.cs" />
     <Compile Include="Creatures\Factories\IRandomCreatureFactory.cs" />
-    <Compile Include="Creatures\Humans\HumanImp.cs" />
+    <Compile Include="Creatures\Cyborgs\CyborgImp.cs" />
     <Compile Include="GameState.cs" />
     <Compile Include="CreatureStats\InfluentialStats.cs" />
     <Compile Include="Components\ActiveComponent.cs" />
     <Compile Include="Components\Component.cs" />
     <Compile Include="Creatures\Creature.cs" />
     <Compile Include="Game.cs" />
-    <Compile Include="Creatures\Humans\Human.cs" />
+    <Compile Include="Creatures\Cyborgs\Cyborg.cs" />
     <Compile Include="Creatures\Builders\ICreatureBuilder.cs" />
     <Compile Include="Planets\Factories\IRandomPlanetFactory.cs" />
     <Compile Include="Planets\Factories\RandomPlanetFactory.cs" />
@@ -143,7 +144,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Components\Factories\ComponentFactory.cs" />
     <Compile Include="Components\Arms\FlameThrowerArm.cs" />
-    <Compile Include="Creatures\Builders\HumanBuilder.cs" />
+    <Compile Include="Creatures\Builders\CyborgBuilder.cs" />
     <Compile Include="Turn.cs" />
     <EmbeddedResource Include="Properties\Stendinator.Core.rd.xml" />
   </ItemGroup>

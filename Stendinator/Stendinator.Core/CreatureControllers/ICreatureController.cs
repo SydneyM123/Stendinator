@@ -1,6 +1,6 @@
 ﻿using Stendinator.Core.Creatures;
 
-namespace Stendinator.Core.EntityControllers
+namespace Stendinator.Core.CreatureControllers
 {
     internal interface ICreatureController
     {

@@ -2,6 +2,6 @@
 {
     internal interface IRandomCreatureFactory
     {
-        Creature Create(string name);
+        Creature Create();
     }
 }

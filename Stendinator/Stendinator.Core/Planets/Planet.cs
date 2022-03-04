@@ -1,8 +1,8 @@
-﻿using Stendinator.Core.Creatures;
+﻿using System;
+using Stendinator.Core.Creatures;
 using Stendinator.Core.Creatures.Factories;
-using System;
 
-namespace Stendinator.Core.Levels
+namespace Stendinator.Core.Planets
 {
     internal abstract class Planet
     {
@@ -12,11 +12,10 @@ namespace Stendinator.Core.Levels
         private int _numberOfEnemies;
         private Creature _currentEnemy;
 
-        public Planet(IRandomCreatureFactory enemyFactory, int numberOfEnemies)
+        protected Planet(IRandomCreatureFactory creatureFactory, int numberOfEnemies)
         {
-            _creatureFactory = enemyFactory;
+            _creatureFactory = creatureFactory;
             _numberOfEnemies = numberOfEnemies;
-            _currentEnemy = null;
 
             //events
             //_fightState.EnemyIsBeaten += EnemyIsBeaten;
@@ -38,6 +37,7 @@ namespace Stendinator.Core.Levels
 
         public void CreateCurrentCreature()
         {
+            _currentEnemy = _creatureFactory.Create();
         }
     }
 }

@@ -1,7 +1,7 @@
-﻿using Stendinator.Core.Creatures;
-using System;
+﻿using System;
+using Stendinator.Core.Creatures;
 
-namespace Stendinator.Core.EntityControllers
+namespace Stendinator.Core.CreatureControllers
 {
     internal class RandomCreatureController : ICreatureController
     {

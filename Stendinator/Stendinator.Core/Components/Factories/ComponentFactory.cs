@@ -1,5 +1,5 @@
-﻿using Stendinator.Core.Robots.Arms;
-using System;
+﻿using System;
+using Stendinator.Core.Components.Arms;
 
 namespace Stendinator.Core.Components.Factories
 {

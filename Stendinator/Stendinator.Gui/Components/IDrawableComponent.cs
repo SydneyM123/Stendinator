@@ -1,4 +1,5 @@
-﻿using Windows.UI.Xaml.Shapes;
+﻿using Windows.UI.Xaml.Controls;
+using Windows.UI.Xaml.Shapes;
 
 namespace Stendinator.Gui.Components
 {
@@ -7,7 +8,7 @@ namespace Stendinator.Gui.Components
         int X { get; set; }
         int Y { get; set; }
         DrawArea DrawArea { get; set; }
-        Shape Draw();
+        Shape Draw(Canvas canvas);
     }
 
     public enum DrawArea

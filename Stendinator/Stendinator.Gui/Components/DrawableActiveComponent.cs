@@ -1,29 +1,27 @@
-﻿using Stendinator.Core.Components;
+﻿using Windows.UI.Xaml.Controls;
+using Stendinator.Core.Components;
 using Windows.UI.Xaml.Shapes;
 
 namespace Stendinator.Gui.Components
 {
     internal abstract class DrawableActiveComponent : ActiveComponent, IDrawableComponent
     {
-        protected ActiveComponent _activeComponent;
+        protected ActiveComponent ActiveComponent;
 
-        public DrawableActiveComponent(ActiveComponent activeComponent)
+        protected DrawableActiveComponent(ActiveComponent activeComponent)
         {
-            _activeComponent = activeComponent;
+            ActiveComponent = activeComponent;
         }
 
         public int X { get; set; }
         public int Y { get; set; }
         public DrawArea DrawArea { get; set; }
 
-        public abstract Shape Draw();
+        public abstract Shape Draw(Canvas canvas);
 
-        public override void Use()
+        public override void Activate()
         {
-            if (_activeComponent != null)
-            {
-                _activeComponent.Use();
-            }
+            ActiveComponent?.Activate();
         }
     }
 }

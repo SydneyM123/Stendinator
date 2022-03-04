@@ -1,27 +1,26 @@
 ﻿using Stendinator.Core.CreatureStats;
-using System;
 
 namespace Stendinator.Core.Components
 {
     public abstract class ActiveComponent : Component
     {
-        public delegate void ComponentUsed(ActiveComponent c, ComponentUsedArgs e);
+        public delegate void Activated(ActiveComponent c, Target e);
 
-        public event ComponentUsed Used;
+        public event Activated ComponentActivated;
 
-        public abstract void Use();
+        public abstract void Activate();
 
-        protected void RaiseUsedEvent(ComponentUsedArgs e)
+        protected void RaiseActivatedEvent(Target e)
         {
-            Used.Invoke(this, e);
+            ComponentActivated?.Invoke(this, e);
         }
     }
 
-    public abstract class ComponentUsedArgs : EventArgs
+    public abstract class Target
     {
     }
 
-    internal class ComponentUsedOnEntityArgs : ComponentUsedArgs
+    internal class Entity : Target
     {
         public InfluentialStats Consequences { get; set; }
     }

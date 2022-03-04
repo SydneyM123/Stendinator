@@ -13,15 +13,14 @@ namespace Stendinator.Core.Creatures
         /// <summary>
         /// The entity this entity will be focused on.
         /// </summary>
-        public Creature Focused { get; set; }
+        public Creature Target { get; set; }
 
-        public Creature()
+        protected Creature()
         {
-            Components = new Component[0];
         }
 
         /// <summary>
-        /// Adds a component to the entity and if a usable component is added it will be linked to the HandleUsedComponent method.
+        /// Adds a component to the entity and if a usable component is added it will be linked to the HandleComponentActivatedComponent method.
         /// </summary>
         /// <param name="component">The component to be added</param>
         protected void AddComponent(Component component)
@@ -29,7 +28,7 @@ namespace Stendinator.Core.Creatures
             var componentList = Components.ToList();
             componentList.Add(component);
             Components = componentList.ToArray();
-            if (component is ActiveComponent activeComponent) activeComponent.Used += HandleUsedComponent;
+            if (component is ActiveComponent activeComponent) activeComponent.ComponentActivated += HandleComponentActivatedComponent;
         }
 
         /// <summary>
@@ -42,7 +41,7 @@ namespace Stendinator.Core.Creatures
             if (componentList.Remove(component))
             {
                 if (component is ActiveComponent activeComponent)
-                    activeComponent.Used -= HandleUsedComponent;
+                    activeComponent.ComponentActivated -= HandleComponentActivatedComponent;
             };
             Components = componentList.ToArray();
         }
@@ -52,6 +51,6 @@ namespace Stendinator.Core.Creatures
         /// </summary>
         /// <param name="activeComponent">The component that has been used</param>
         /// <param name="args">Specific values the component has influence on</param>
-        protected abstract void HandleUsedComponent(ActiveComponent activeComponent, ComponentUsedArgs args);
+        protected abstract void HandleComponentActivatedComponent(ActiveComponent activeComponent, Target args);
     }
 }

@@ -1,7 +1,8 @@
 ﻿using Stendinator.Core.Components;
-using Stendinator.Core.Robots.Arms;
 using System;
+using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Shapes;
+using Stendinator.Core.Components.Arms;
 
 namespace Stendinator.Gui.Components
 {
@@ -11,7 +12,7 @@ namespace Stendinator.Gui.Components
         {
         }
 
-        public override Shape Draw()
+        public override Shape Draw(Canvas canvas)
         {
             throw new NotImplementedException();
         }
