@@ -29,7 +29,7 @@ namespace Stendinator.Core.Creatures
             var componentList = Components.ToList();
             componentList.Add(component);
             Components = componentList.ToArray();
-            if (component is ActiveComponent activeComponent) activeComponent.ComponentActivated += HandleComponentActivatedComponent;
+            if (component is ActiveComponent activeComponent) activeComponent.ComponentActivated += HandleActivatedComponent;
         }
 
         /// <summary>
@@ -42,7 +42,7 @@ namespace Stendinator.Core.Creatures
             if (componentList.Remove(component))
             {
                 if (component is ActiveComponent activeComponent)
-                    activeComponent.ComponentActivated -= HandleComponentActivatedComponent;
+                    activeComponent.ComponentActivated -= HandleActivatedComponent;
             };
             Components = componentList.ToArray();
         }
@@ -52,6 +52,6 @@ namespace Stendinator.Core.Creatures
         /// </summary>
         /// <param name="activeComponent">The component that has been used</param>
         /// <param name="args">Specific values the component has influence on</param>
-        protected abstract void HandleComponentActivatedComponent(ActiveComponent activeComponent, Target args);
+        protected abstract void HandleActivatedComponent(ActiveComponent activeComponent, Target args);
     }
 }

@@ -6,7 +6,7 @@ namespace Stendinator.Core.Creatures.Aliens
 {
     internal class Alien : Creature
     {
-        protected override void HandleComponentActivatedComponent(ActiveComponent uc, Target e)
+        protected override void HandleActivatedComponent(ActiveComponent uc, Target e)
         {
             if (e is Entity entityArgs)
             {
