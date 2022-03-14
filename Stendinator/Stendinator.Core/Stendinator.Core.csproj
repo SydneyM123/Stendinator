@@ -120,6 +120,10 @@
     <RestoreProjectStyle>PackageReference</RestoreProjectStyle>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="Components\Arms\HealingArm.cs" />
+    <Compile Include="Components\Arms\ShieldArm.cs" />
+    <Compile Include="Components\Arms\StunGunArm.cs" />
+    <Compile Include="Components\Arms\ChainsawArm.cs" />
     <Compile Include="Components\Targets\Entity.cs" />
     <Compile Include="Components\Factories\IComponentFactory.cs" />
     <Compile Include="Components\Targets\Target.cs" />
