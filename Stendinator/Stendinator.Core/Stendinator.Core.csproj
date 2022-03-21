@@ -124,6 +124,15 @@
     <Compile Include="Components\Arms\ShieldArm.cs" />
     <Compile Include="Components\Arms\StunGunArm.cs" />
     <Compile Include="Components\Arms\ChainsawArm.cs" />
+    <Compile Include="Components\Body\BalancedBody.cs" />
+    <Compile Include="Components\Body\SturyBody.cs" />
+    <Compile Include="Components\Body\HealthyBody.cs" />
+    <Compile Include="Components\Heads\BalancedHead.cs" />
+    <Compile Include="Components\Heads\HealthyHead.cs" />
+    <Compile Include="Components\Heads\SturdyHead.cs" />
+    <Compile Include="Components\Legs\BallancedLegg.cs" />
+    <Compile Include="Components\Legs\HealthyLegg.cs" />
+    <Compile Include="Components\Legs\SturdyLegg.cs" />
     <Compile Include="Components\Targets\Entity.cs" />
     <Compile Include="Components\Factories\IComponentFactory.cs" />
     <Compile Include="Components\Targets\Target.cs" />

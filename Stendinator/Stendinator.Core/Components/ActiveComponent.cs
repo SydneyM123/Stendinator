@@ -8,7 +8,6 @@ namespace Stendinator.Core.Components
         public delegate void Activated(ActiveComponent c, Target e);
 
         public event Activated ComponentActivated;
-        public override InfluentialStats PassiveStats {get; set;}
         public abstract void Activate();
 
         protected void RaiseActivatedEvent(Target e)

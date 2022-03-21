@@ -22,5 +22,10 @@ namespace Stendinator.Core.Components.Arms
                 }
             }); 
         }
+
+        public InfluentialStats getPassiveStats()
+        {
+            return PassiveStats;
+        }
     }
 }
