@@ -1,4 +1,5 @@
 ﻿using Stendinator.Core.Components.Targets;
+using Stendinator.Core.CreatureStats;
 
 namespace Stendinator.Core.Components
 {
@@ -7,7 +8,6 @@ namespace Stendinator.Core.Components
         public delegate void Activated(ActiveComponent c, Target e);
 
         public event Activated ComponentActivated;
-
         public abstract void Activate();
 
         protected void RaiseActivatedEvent(Target e)

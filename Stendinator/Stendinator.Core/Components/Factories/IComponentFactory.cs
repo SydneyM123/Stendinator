@@ -3,5 +3,7 @@
     public interface IComponentFactory
     {
         Component Create(string name);
+
+        string[] GetNames();
     }
 }
