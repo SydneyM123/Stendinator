@@ -2,6 +2,6 @@
 {
     internal interface IRandomPlanetFactory
     {
-        Planet Create(int difficulty);
+        Planet Create(int difficulty, string name);
     }
 }

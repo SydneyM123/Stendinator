@@ -8,9 +8,9 @@ namespace Stendinator.Core.Planets
     {
         public event EventHandler PlanetIsBeaten;
 
-        private IRandomCreatureFactory _creatureFactory;
-        private int _numberOfEnemies;
-        private Creature _currentEnemy;
+        protected IRandomCreatureFactory _creatureFactory;
+        protected int _numberOfEnemies;
+        protected Creature _currentEnemy;
 
         protected Planet(IRandomCreatureFactory creatureFactory, int numberOfEnemies)
         {

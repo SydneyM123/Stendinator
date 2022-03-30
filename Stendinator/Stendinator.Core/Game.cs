@@ -28,8 +28,10 @@ namespace Stendinator.Core
 
         public void CreateNewLevel()
         {
+            var random = new Random();
+            var levelTypes = new []{ nameof(AlienPlanet), nameof(CyborgPlanet)};
             //Generate new level
-            _currentPlanet = _randomPlanetFactory.Create(_state.CurrentStage);
+            _currentPlanet = _randomPlanetFactory.Create(_state.CurrentStage, levelTypes[random.Next(levelTypes.Length)]);
             _currentPlanet.PlanetIsBeaten += PlanetIsBeaten;
         }
     }

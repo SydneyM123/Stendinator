@@ -24,7 +24,7 @@ namespace Stendinator.Core.Creatures
         /// Adds a component to the entity and if a usable component is added it will be linked to the HandleComponentActivatedComponent method.
         /// </summary>
         /// <param name="component">The component to be added</param>
-        protected void AddComponent(Component component)
+        public void AddComponent(Component component)
         {
             var componentList = Components.ToList();
             componentList.Add(component);
