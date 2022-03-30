@@ -1,27 +1,36 @@
 ﻿using Stendinator.Core.Creatures;
 using System;
+using System.Linq;
+using Stendinator.Core.Components;
+using Stendinator.Core.Creatures.Builders;
+using Stendinator.Core.Creatures.Cyborgs;
 using Stendinator.Core.Planets;
 using Stendinator.Core.Planets.Factories;
 
 namespace Stendinator.Core
 {
-    internal class Game
+    public class Game
     {
-        private Planet _currentPlanet;
-        private Creature _player;
+        public Planet CurrentPlanet;
+        private Cyborg _player;
+        private CyborgBuilder _cyborgBuilder;
         private GameState _state;
         private readonly IRandomPlanetFactory _randomPlanetFactory;
-        
+
         public Game(IRandomPlanetFactory levelFactory)
         {
             _randomPlanetFactory = levelFactory;
+            _cyborgBuilder = new CyborgBuilder();
+            _state = new GameState();
+            _cyborgBuilder.CreatePlayer(_state.EquipableComponents);
+
         }
 
         public void PlanetIsBeaten(object sender, EventArgs args)
         {
             //Remove current level
-            if (_currentPlanet == null) return;
-            _currentPlanet.PlanetIsBeaten -= PlanetIsBeaten;
+            if (CurrentPlanet == null) return;
+            CurrentPlanet.PlanetIsBeaten -= PlanetIsBeaten;
             _state.CurrentStage++;
             CreateNewLevel();
         }
@@ -29,10 +38,36 @@ namespace Stendinator.Core
         public void CreateNewLevel()
         {
             var random = new Random();
-            var levelTypes = new []{ nameof(AlienPlanet), nameof(CyborgPlanet)};
+            var levelTypes = new[] { nameof(AlienPlanet), nameof(CyborgPlanet) };
             //Generate new level
-            _currentPlanet = _randomPlanetFactory.Create(_state.CurrentStage, levelTypes[random.Next(levelTypes.Length)]);
-            _currentPlanet.PlanetIsBeaten += PlanetIsBeaten;
+            CurrentPlanet = _randomPlanetFactory.Create(_state.CurrentStage, levelTypes[random.Next(levelTypes.Length)]);
+            CurrentPlanet.PlanetIsBeaten += PlanetIsBeaten;
+        }
+
+        public void ChangePlayerComponent(Component newComponent, string position)
+        {
+            switch (position)
+            {
+                case "Head":
+                    _player.AddHead(newComponent);
+                    break;
+                case "LeftArm":
+                    _player.AddLeftArm(newComponent);
+                    break;
+                case "RightArm":
+                    _player.AddRightArm(newComponent);
+                    break;
+                case "Body":
+                    _player.AddTorso(newComponent);
+                    break;
+                case "LeftLeg":
+                    _player.AddLeftLeg(newComponent);
+                    break;
+                case "RightLeg":
+                    _player.AddRightLeg(newComponent);
+                    break;
+            }
         }
     }
+
 }

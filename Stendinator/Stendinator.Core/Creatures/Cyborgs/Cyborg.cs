@@ -3,7 +3,7 @@ using Stendinator.Core.Components.Targets;
 
 namespace Stendinator.Core.Creatures.Cyborgs
 {
-    internal class Cyborg : Creature
+    public class Cyborg : Creature
     {
         private Component _leftArm;
         private Component _rightArm;
@@ -22,46 +22,59 @@ namespace Stendinator.Core.Creatures.Cyborgs
             _rightLeg = null;
         }
 
-        public void SetLeftArm(Component component)
+        public void AddLeftArm(Component component)
         {
-            SetComponent(ref _leftArm, component);
+            ChangeComponent(ref _leftArm, component);
         }
 
-        public void SetRightArm(Component component)
+        public void AddRightArm(Component component)
         {
-            SetComponent(ref _rightArm, component);
+            ChangeComponent(ref _rightArm, component);
         }
 
         public void AddTorso(Component component)
         {
-            SetComponent(ref _torso, component);
+            ChangeComponent(ref _torso, component);
         }
 
         public void AddHead(Component component)
         {
-            SetComponent(ref _head, component);
+            ChangeComponent(ref _head, component);
         }
 
         public void AddRightLeg(Component component)
         {
-            SetComponent(ref _rightLeg, component);
+            ChangeComponent(ref _rightLeg, component);
         }
 
         public void AddLeftLeg(Component component)
         {
-            SetComponent(ref _leftLeg, component);
+            ChangeComponent(ref _leftLeg, component);
         }
 
-        private void SetComponent(ref Component oldComponent, Component newComponent)
+        private void ChangeComponent(ref Component oldComponent, Component newComponent)
         {
-            if (oldComponent != null) RemoveComponent(oldComponent);
-            AddComponent(newComponent);
+            if (oldComponent != null)
+            {
+                RemoveComponent(oldComponent);
+            }
             oldComponent = newComponent;
+            AddComponent(oldComponent);
         }
 
-        protected override void HandleActivatedComponent(ActiveComponent activeComponent, Target args)
+        public Component GetLeftArm()
+        {
+            return _leftArm;
+        }
+
+        protected override void HandleActivatedComponent(ActiveComponent activeComponent, Target e)
         {
             //Handle components used on Target entity
+         
+                if (e is Entity entityArgs)
+                {
+                    Target.Health -= entityArgs.Consequences.HealthDecrease;
+                }
         }
     }
 }

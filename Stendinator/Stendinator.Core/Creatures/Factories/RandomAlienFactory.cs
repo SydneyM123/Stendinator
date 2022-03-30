@@ -8,7 +8,7 @@ using Stendinator.Core.Creatures.Aliens;
 
 namespace Stendinator.Core.Creatures.Factories
 {
-    internal class RandomAlienFactory : IRandomCreatureFactory
+    public class RandomAlienFactory : IRandomCreatureFactory
     {
         private readonly ComponentFactory _componentFactory = new ComponentFactory();
         public Creature Create()

@@ -7,7 +7,7 @@ using Stendinator.Core.Creatures.Factories;
 
 namespace Stendinator.Core.Planets
 {
-    internal class AlienPlanet : Planet
+    public class AlienPlanet : Planet
     {
         public AlienPlanet(IRandomCreatureFactory creatureFactory, int numberOfEnemies) : base(creatureFactory, numberOfEnemies)
         {

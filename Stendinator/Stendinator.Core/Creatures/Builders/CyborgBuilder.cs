@@ -1,43 +1,99 @@
 ﻿using Stendinator.Core.Components;
 using System;
+using Stendinator.Core.Creatures.Cyborgs;
 
 namespace Stendinator.Core.Creatures.Builders
 {
     internal class CyborgBuilder : ICreatureBuilder
     {
-        public ICreatureBuilder AddHead(Component c)
+        private Cyborg _cyborg;
+
+        public CyborgBuilder()
         {
-            throw new NotImplementedException();
+            Reset();
         }
 
-        public ICreatureBuilder AddTorso(Component c)
+        private void Reset()
         {
-            throw new NotImplementedException();
+            _cyborg = new Cyborg();
+        }
+        public void AddHead(Component c)
+        {
+            _cyborg.AddHead(c);
         }
 
-        public ICreatureBuilder AddRightArm(Component c)
+        public void AddTorso(Component c)
         {
-            throw new NotImplementedException();
+            _cyborg.AddTorso(c);
         }
 
-        public ICreatureBuilder AddLeftArm(Component c)
+        public void AddRightArm(Component c)
         {
-            throw new NotImplementedException();
+            _cyborg.AddRightArm(c);
         }
 
-        public ICreatureBuilder AddRightLeg(Component c)
+        public void AddLeftArm(Component c)
         {
-            throw new NotImplementedException();
+            _cyborg.AddLeftArm(c);
         }
 
-        public ICreatureBuilder AddLeftLeg(Component c)
+        public void AddRightLeg(Component c)
         {
-            throw new NotImplementedException();
+            _cyborg.AddRightLeg(c);
+        }
+
+        public void AddLeftLeg(Component c)
+        {
+            _cyborg.AddLeftLeg(c);
+        }
+
+        //TODO Discus if Builder is properly used
+        public void CreatePlayer(Component[] components)
+        {
+            var arm = 0;
+            var leg = 0;
+            foreach (var component in components)
+            {
+                if (nameof(component).Contains("Head"))
+                {
+                    AddHead(component);
+                }
+                if (nameof(component).Contains("Body"))
+                {
+                    AddTorso(component);
+                }
+                if (nameof(component).Contains("Arm"))
+                {
+                    if (arm == 0)
+                    {
+                        AddLeftArm(component);
+                        arm++;
+                    }
+                    else
+                    {
+                        AddRightArm(component);
+                        arm = 0;
+                    }
+                }
+                if (nameof(component).Contains("Leg"))
+                {
+                    if (leg == 0)
+                    {
+                        AddLeftLeg(component);
+                        leg++;
+                    }
+                    else
+                    {
+                        AddRightLeg(component);
+                        leg = 0;
+                    }
+                }
+            }
         }
 
         public Creature GetCreature()
         {
-            throw new NotImplementedException();
+            return _cyborg;
         }
     }
 }

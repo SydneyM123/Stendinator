@@ -4,7 +4,7 @@ using Stendinator.Core.Components.Targets;
 
 namespace Stendinator.Core.Creatures
 {
-    internal abstract class Creature
+    public abstract class Creature
     {
         public int Health { get; set; }
         public int Defense { get; set; }
@@ -18,6 +18,7 @@ namespace Stendinator.Core.Creatures
 
         protected Creature()
         {
+            Components = new Component[0];
         }
 
         /// <summary>
@@ -30,6 +31,8 @@ namespace Stendinator.Core.Creatures
             componentList.Add(component);
             Components = componentList.ToArray();
             if (component is ActiveComponent activeComponent) activeComponent.ComponentActivated += HandleActivatedComponent;
+            Health += component.PassiveStats.HealthIncrease;
+            Defense += component.PassiveStats.DefenseIncrease;
         }
 
         /// <summary>
@@ -44,6 +47,8 @@ namespace Stendinator.Core.Creatures
                 if (component is ActiveComponent activeComponent)
                     activeComponent.ComponentActivated -= HandleActivatedComponent;
             };
+            Health -= component.PassiveStats.HealthIncrease;
+            Defense -= component.PassiveStats.DefenseIncrease;
             Components = componentList.ToArray();
         }
 

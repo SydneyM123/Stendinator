@@ -4,19 +4,19 @@ using Stendinator.Core.Creatures.Factories;
 
 namespace Stendinator.Core.Planets
 {
-    internal abstract class Planet
+    public abstract class Planet
     {
         public event EventHandler PlanetIsBeaten;
 
-        protected IRandomCreatureFactory _creatureFactory;
-        protected int _numberOfEnemies;
-        protected Creature _currentEnemy;
+        private protected IRandomCreatureFactory _creatureFactory;
+        private protected int _numberOfEnemies;
+        private Creature _currentEnemy;
 
         protected Planet(IRandomCreatureFactory creatureFactory, int numberOfEnemies)
         {
             _creatureFactory = creatureFactory;
             _numberOfEnemies = numberOfEnemies;
-
+            CreateCurrentCreature();
             //events
             //_fightState.EnemyIsBeaten += EnemyIsBeaten;
         }

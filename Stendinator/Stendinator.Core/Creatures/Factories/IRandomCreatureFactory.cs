@@ -1,6 +1,6 @@
 ﻿namespace Stendinator.Core.Creatures.Factories
 {
-    internal interface IRandomCreatureFactory
+    public interface IRandomCreatureFactory
     {
         Creature Create();
     }
