@@ -2,9 +2,9 @@
 
 namespace Stendinator.Core.Components.Heads
 {
-    public class SturyBody : Component
+    public class SturdyBody : Component
     {
-        public SturyBody()
+        public SturdyBody()
         {
             PassiveStats = new InfluentialStats();
             PassiveStats.HealthIncrease += 20;

@@ -2,13 +2,13 @@
 
 namespace Stendinator.Core.Components.Legs
 {
-    public class BallancedLegg : Component
+    public class SturdyLeg : Component
     {
-        public BallancedLegg()
+        public SturdyLeg()
         {
             PassiveStats = new InfluentialStats();
-            PassiveStats.HealthIncrease += 13;
-            PassiveStats.DefenseIncrease += 12;
+            PassiveStats.HealthIncrease += 5;
+            PassiveStats.DefenseIncrease += 15;
         }
     }
 }
