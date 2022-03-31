@@ -8,14 +8,14 @@ namespace Stendinator.Core.Planets
     {
         public event EventHandler PlanetIsBeaten;
 
-        private protected IRandomCreatureFactory _creatureFactory;
-        private protected int _numberOfEnemies;
+        protected IRandomCreatureFactory CreatureFactory;
+        protected int NumberOfEnemies;
         private Creature _currentEnemy;
 
         protected Planet(IRandomCreatureFactory creatureFactory, int numberOfEnemies)
         {
-            _creatureFactory = creatureFactory;
-            _numberOfEnemies = numberOfEnemies;
+            CreatureFactory = creatureFactory;
+            NumberOfEnemies = numberOfEnemies;
             CreateCurrentCreature();
             //events
             //_fightState.EnemyIsBeaten += EnemyIsBeaten;
@@ -24,8 +24,8 @@ namespace Stendinator.Core.Planets
         public void EnemyIsBeaten(object s, EventArgs e)
         {
             //Remove current enemy
-            _numberOfEnemies--;
-            if (_numberOfEnemies <= 0)
+            NumberOfEnemies--;
+            if (NumberOfEnemies <= 0)
             {
                 PlanetIsBeaten?.Invoke(this, new EventArgs());
             }
@@ -37,7 +37,7 @@ namespace Stendinator.Core.Planets
 
         public void CreateCurrentCreature()
         {
-            _currentEnemy = _creatureFactory.Create();
+            _currentEnemy = CreatureFactory.Create();
         }
     }
 }

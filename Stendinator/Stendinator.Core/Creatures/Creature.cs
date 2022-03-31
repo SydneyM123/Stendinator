@@ -1,4 +1,5 @@
-﻿using Stendinator.Core.Components;
+﻿using System;
+using Stendinator.Core.Components;
 using System.Linq;
 using Stendinator.Core.Components.Targets;
 
@@ -18,7 +19,7 @@ namespace Stendinator.Core.Creatures
 
         protected Creature()
         {
-            Components = new Component[0];
+            Components = Array.Empty<Component>();
         }
 
         /// <summary>
@@ -56,7 +57,7 @@ namespace Stendinator.Core.Creatures
         /// The consequences the focused entity will be dealing with.
         /// </summary>
         /// <param name="activeComponent">The component that has been used</param>
-        /// <param name="args">Specific values the component has influence on</param>
-        protected abstract void HandleActivatedComponent(ActiveComponent activeComponent, Target args);
+        /// <param name="e">Specific values the component influences</param>
+        public abstract void HandleActivatedComponent(ActiveComponent activeComponent, Target e);
     }
 }

@@ -1,4 +1,5 @@
 ﻿using Stendinator.Core.Components.Targets;
+using Stendinator.Core.Creatures;
 using Stendinator.Core.CreatureStats;
 
 namespace Stendinator.Core.Components

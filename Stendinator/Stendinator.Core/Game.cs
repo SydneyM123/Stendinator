@@ -43,31 +43,6 @@ namespace Stendinator.Core
             CurrentPlanet = _randomPlanetFactory.Create(_state.CurrentStage, levelTypes[random.Next(levelTypes.Length)]);
             CurrentPlanet.PlanetIsBeaten += PlanetIsBeaten;
         }
-
-        public void ChangePlayerComponent(Component newComponent, string position)
-        {
-            switch (position)
-            {
-                case "Head":
-                    _player.AddHead(newComponent);
-                    break;
-                case "LeftArm":
-                    _player.AddLeftArm(newComponent);
-                    break;
-                case "RightArm":
-                    _player.AddRightArm(newComponent);
-                    break;
-                case "Body":
-                    _player.AddTorso(newComponent);
-                    break;
-                case "LeftLeg":
-                    _player.AddLeftLeg(newComponent);
-                    break;
-                case "RightLeg":
-                    _player.AddRightLeg(newComponent);
-                    break;
-            }
-        }
     }
 
 }

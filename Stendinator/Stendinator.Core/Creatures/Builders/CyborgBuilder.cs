@@ -12,7 +12,6 @@ namespace Stendinator.Core.Creatures.Builders
         {
             Reset();
         }
-
         private void Reset()
         {
             _cyborg = new Cyborg();
@@ -88,6 +87,32 @@ namespace Stendinator.Core.Creatures.Builders
                         leg = 0;
                     }
                 }
+            }
+        }
+        public void ChangePlayerComponent(Component newComponent, string position, Cyborg cyborg)
+        {
+            _cyborg = cyborg; // set the cyborg where you want to change the part from
+
+            switch (position)
+            {
+                case "Head":
+                    AddHead(newComponent);
+                    break;
+                case "LeftArm":
+                    AddLeftArm(newComponent);
+                    break;
+                case "RightArm":
+                    AddRightArm(newComponent);
+                    break;
+                case "Body":
+                    AddTorso(newComponent);
+                    break;
+                case "LeftLeg":
+                    AddLeftLeg(newComponent);
+                    break;
+                case "RightLeg":
+                    AddRightLeg(newComponent);
+                    break;
             }
         }
 

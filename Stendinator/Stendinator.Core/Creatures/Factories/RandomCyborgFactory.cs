@@ -11,7 +11,6 @@ namespace Stendinator.Core.Creatures.Factories
         /// <summary>
         /// 
         /// </summary>
-        /// <param name="name">Type of creature to create</param>
         /// <returns>Cyborg with all Components</returns>
         public Creature Create()
         {

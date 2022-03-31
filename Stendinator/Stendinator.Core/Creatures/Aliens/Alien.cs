@@ -1,19 +1,28 @@
 ﻿using Stendinator.Core.Components;
 using System;
+using Stendinator.Core.Components.Arms;
 using Stendinator.Core.Components.Targets;
 
 namespace Stendinator.Core.Creatures.Aliens
 {
-    internal class Alien : Creature
+    public class Alien : Creature
     {
-        protected override void HandleActivatedComponent(ActiveComponent ac, Target e)
+        public Alien()
         {
-            if (e is Entity entityArgs)
-            {
-                Target.Health -= entityArgs.Consequences.HealthDecrease;
-            }
+            Target = new Alien();
+        }
 
-            throw new NotImplementedException();
+        public override void HandleActivatedComponent(ActiveComponent ac, Target e)
+        {
+            if (!(e is Entity entityArgs)) return;
+            if (ac is HealingArm || ac is ShieldArm)
+            {
+                this.Health += entityArgs.Consequences.HealthIncrease;
+                this.Defense += entityArgs.Consequences.DefenseIncrease;
+                return;
+            }
+            Target.Health -= entityArgs.Consequences.HealthDecrease;
+            Target.Defense -= entityArgs.Consequences.DefenseDecrease;
         }
     }
 }

@@ -1,7 +1,11 @@
 ﻿using Stendinator.Core.Creatures.Cyborgs;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Stendinator.Core.Components;
+using Stendinator.Core.Components.Arms;
+using Stendinator.Core.Components.Heads;
+using Stendinator.Core.Components.Targets;
 using Stendinator.Core.Creatures.Factories;
+using Stendinator.Core.Creatures.Aliens;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace Stendinator.Core.Tests.Creature
 {
@@ -26,6 +30,23 @@ namespace Stendinator.Core.Tests.Creature
                 Assert.IsInstanceOfType(component, typeof(Component));
             }
             _cyborg = new Cyborg();
+        }
+
+        [TestMethod]
+        public void TestCyborgAttack()
+        {
+            _cyborg.AddTorso(new SturdyBody());
+
+            Assert.AreEqual(20, _cyborg.Health);
+
+            var creature = new Alien();
+
+            creature.AddComponent( new FlameThrowerArm());
+            var target = new Entity();
+            target.SetTarget(_cyborg);
+            creature.HandleActivatedComponent((ActiveComponent)creature.Components[0], target);
+
+            // Assert.AreEqual(5, _cyborg.Health);
         }
     }
 }

@@ -1,4 +1,8 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using Stendinator.Core.Components;
+using Stendinator.Core.Components.Targets;
 using Stendinator.Core.Creatures;
 
 namespace Stendinator.Core.CreatureControllers
@@ -7,16 +11,16 @@ namespace Stendinator.Core.CreatureControllers
     {
         private Creature _creature;
 
-        public RandomCreatureController(Creature e)
+        public RandomCreatureController()
         {
-            _creature = e;
         }
 
-        public void Act()
+        public void Act(Target target)
         {
+            var random = new Random();
             if (_creature == null) throw new EntityNotSet();
-
-            throw new NotImplementedException();
+            var componentArray = (ActiveComponent[]) _creature.Components.Where(component => component.GetType() == typeof(ActiveComponent)).ToArray();
+            _creature.HandleActivatedComponent(componentArray[random.Next(componentArray.Length - 1)], target);
         }
 
         public void SetCreatureToControl(Creature e)

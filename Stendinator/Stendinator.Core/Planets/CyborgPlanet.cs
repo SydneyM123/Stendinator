@@ -11,8 +11,8 @@ namespace Stendinator.Core.Planets
     {
         public CyborgPlanet(IRandomCreatureFactory creatureFactory, int numberOfEnemies) : base(creatureFactory, numberOfEnemies)
         {
-            _creatureFactory = creatureFactory;
-            _numberOfEnemies = numberOfEnemies;
+            CreatureFactory = creatureFactory;
+            NumberOfEnemies = numberOfEnemies;
         }
     }
 }
