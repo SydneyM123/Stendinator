@@ -9,7 +9,6 @@ namespace Stendinator.Core.Creatures.Aliens
     {
         public Alien()
         {
-            Target = new Alien();
         }
 
         public override void HandleActivatedComponent(ActiveComponent ac, Target e)

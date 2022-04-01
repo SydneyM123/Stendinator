@@ -23,7 +23,8 @@ namespace Stendinator.Core
             _cyborgBuilder = new CyborgBuilder();
             _state = new GameState();
             _cyborgBuilder.CreatePlayer(_state.EquipableComponents);
-
+            _player = new Cyborg();
+            _player = _cyborgBuilder.CreatePlayer(_state.EquipableComponents);
         }
 
         public void PlanetIsBeaten(object sender, EventArgs args)

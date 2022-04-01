@@ -13,40 +13,43 @@ namespace Stendinator.Core.Tests.Creature
     public class CyborgTests
     {
         private readonly RandomCyborgFactory _randomCyborgFactory = new RandomCyborgFactory();
-        private Cyborg _cyborg = new Cyborg();
+
 
         [TestMethod]
         public void TestCyborgIsNotBuild()
         {
-            Assert.IsNull(_cyborg.GetLeftArm());
+            Cyborg cyborg = new Cyborg();
+            Assert.IsNull(cyborg.GetLeftArm());
         }
+
 
         [TestMethod]
         public void TestCyborgIsBuild()
         {
-            _cyborg = (Cyborg)_randomCyborgFactory.Create();
-            foreach (var component in _cyborg.Components)
+            var cyborg = new Cyborg();
+            cyborg = (Cyborg)_randomCyborgFactory.Create();
+            foreach (var component in cyborg.Components)
             {
                 Assert.IsInstanceOfType(component, typeof(Component));
             }
-            _cyborg = new Cyborg();
         }
 
         [TestMethod]
         public void TestCyborgAttack()
         {
-            _cyborg.AddTorso(new SturdyBody());
+            var cyborg = new Cyborg();
+            cyborg.AddTorso(new SturdyBody());
 
-            Assert.AreEqual(20, _cyborg.Health);
+            Assert.AreEqual(20, cyborg.Health);
 
             var creature = new Alien();
 
-            creature.AddComponent( new FlameThrowerArm());
+            creature.AddComponent(new FlameThrowerArm());
             var target = new Entity();
-            target.SetTarget(_cyborg);
+            target.SetTarget(cyborg);
             creature.HandleActivatedComponent((ActiveComponent)creature.Components[0], target);
 
-            // Assert.AreEqual(5, _cyborg.Health);
+            Assert.AreEqual(5, cyborg.Health);
         }
     }
 }

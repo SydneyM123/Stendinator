@@ -21,7 +21,6 @@ namespace Stendinator.Core.Creatures.Cyborgs
             _head = null;
             _leftLeg = null;
             _rightLeg = null;
-            Target = new Cyborg();
         }
 
         public void AddLeftArm(Component component)

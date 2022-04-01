@@ -1,6 +1,7 @@
 ﻿using System;
 using Stendinator.Core.Components;
 using System.Linq;
+using Windows.ApplicationModel.DataTransfer;
 using Stendinator.Core.Components.Targets;
 
 namespace Stendinator.Core.Creatures
@@ -19,7 +20,7 @@ namespace Stendinator.Core.Creatures
 
         protected Creature()
         {
-            Components = Array.Empty<Component>();
+            Components = new Component[0];
         }
 
         /// <summary>

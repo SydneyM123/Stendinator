@@ -47,7 +47,7 @@ namespace Stendinator.Core.Creatures.Builders
         }
 
         //TODO Discus if Builder is properly used
-        public void CreatePlayer(Component[] components)
+        public Cyborg CreatePlayer(Component[] components)
         {
             var arm = 0;
             var leg = 0;
@@ -88,6 +88,8 @@ namespace Stendinator.Core.Creatures.Builders
                     }
                 }
             }
+
+            return _cyborg;
         }
         public void ChangePlayerComponent(Component newComponent, string position, Cyborg cyborg)
         {
