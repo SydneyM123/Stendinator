@@ -12,9 +12,9 @@ namespace Stendinator.Core.Creatures.Factories
 {
     public class RandomAlienFactory : IRandomCreatureFactory
     {
-        // Perhaps Make Abstract Factory for Balanced, Healthy, and Sturdy
         private readonly ComponentFactory[] _componentFactories;
         private readonly IAbstractComponentFactory[] _abstractComponentFactories;
+        private int MaxComponents;
         
         public RandomAlienFactory()
         {
@@ -33,6 +33,8 @@ namespace Stendinator.Core.Creatures.Factories
                 new HealthyComponentFactory(),
                 new BalancedComponentFactory()
             };
+
+            MaxComponents = new Random().Next(3, 8);
         }
 
         public Creature Create()
@@ -43,13 +45,31 @@ namespace Stendinator.Core.Creatures.Factories
             alien.AddComponent(GetRandomLeg());
             alien.AddComponent(GetRandomHead());
             
-            //Make 5 random components
-            for (var i = 0; i < 5; i++)
+            for (var i = 0; i < MaxComponents; i++)
             {
-                
+                alien.AddComponent(GetRandomComponent());
             }
 
             return alien;
+        }
+
+        private Component GetRandomComponent()
+        {
+            int randomNumber = new Random().Next(0, 4);
+
+            switch(randomNumber)
+            {
+                case 1:
+                    return GetRandomArm();
+                case 2:
+                    return GetRandomHead();
+                case 3:
+                    return GetRandomBody();
+                case 4:
+                    return GetRandomLeg();
+                default:
+                    return null;
+            }
         }
 
         private Component GetRandomArm()
