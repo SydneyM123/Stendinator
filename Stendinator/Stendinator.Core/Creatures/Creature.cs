@@ -1,7 +1,7 @@
 ﻿using System;
 using Stendinator.Core.Components;
 using System.Linq;
-using Windows.ApplicationModel.DataTransfer;
+using Stendinator.Core.Components.Arms;
 using Stendinator.Core.Components.Targets;
 
 namespace Stendinator.Core.Creatures
@@ -20,7 +20,7 @@ namespace Stendinator.Core.Creatures
 
         protected Creature()
         {
-            Components = new Component[0];
+            Components = Array.Empty<Component>();
         }
 
         /// <summary>
@@ -33,8 +33,8 @@ namespace Stendinator.Core.Creatures
             componentList.Add(component);
             Components = componentList.ToArray();
             if (component is ActiveComponent activeComponent) activeComponent.ComponentActivated += HandleActivatedComponent;
-            Health += component.PassiveStats.HealthIncrease;
-            Defense += component.PassiveStats.DefenseIncrease;
+            Health += component.PassiveStats.Health;
+            Defense += component.PassiveStats.Defense;
         }
 
         /// <summary>
@@ -49,8 +49,8 @@ namespace Stendinator.Core.Creatures
                 if (component is ActiveComponent activeComponent)
                     activeComponent.ComponentActivated -= HandleActivatedComponent;
             };
-            Health -= component.PassiveStats.HealthIncrease;
-            Defense -= component.PassiveStats.DefenseIncrease;
+            Health -= component.PassiveStats.Health;
+            Defense -= component.PassiveStats.Defense;
             Components = componentList.ToArray();
         }
 
@@ -59,6 +59,22 @@ namespace Stendinator.Core.Creatures
         /// </summary>
         /// <param name="activeComponent">The component that has been used</param>
         /// <param name="e">Specific values the component influences</param>
-        public abstract void HandleActivatedComponent(ActiveComponent activeComponent, Target e);
+        public void HandleActivatedComponent(ActiveComponent ac, CreatureTarget e)
+        {
+            if (ac is HealingArm or ShieldArm) InfluenceOnSelf(e);
+            else InfluenceOnTarget(e);
+        }
+
+        private void InfluenceOnTarget(CreatureTarget e)
+        {
+            Target.Health += e.Consequences.Health;
+            Target.Defense += e.Consequences.Defense;
+        }
+
+        private void InfluenceOnSelf(CreatureTarget e)
+        {
+            Health += e.Consequences.Health;
+            Defense += e.Consequences.Defense;
+        }
     }
 }

@@ -1,6 +1,4 @@
 ﻿using Stendinator.Core.Components;
-using Stendinator.Core.Components.Arms;
-using Stendinator.Core.Components.Targets;
 
 namespace Stendinator.Core.Creatures.Cyborgs
 {
@@ -66,23 +64,6 @@ namespace Stendinator.Core.Creatures.Cyborgs
         public Component GetLeftArm()
         {
             return _leftArm;
-        }
-
-        public override void HandleActivatedComponent(ActiveComponent ac, Target e)
-        {
-            //Handle components used on Target entity
-
-            if (!(e is Entity entityArgs)) return;
-            Target = e.TargetCreature;
-
-            if (ac is HealingArm || ac is ShieldArm)
-            {
-                this.Health += entityArgs.Consequences.HealthIncrease;
-                this.Defense += entityArgs.Consequences.DefenseIncrease;
-                return;
-            }
-            Target.Health -= entityArgs.Consequences.HealthDecrease;
-            Target.Defense -= entityArgs.Consequences.DefenseDecrease;
         }
     }
 }

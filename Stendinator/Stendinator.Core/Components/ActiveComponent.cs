@@ -1,17 +1,22 @@
 ﻿using Stendinator.Core.Components.Targets;
-using Stendinator.Core.Creatures;
-using Stendinator.Core.CreatureStats;
 
 namespace Stendinator.Core.Components
 {
     public abstract class ActiveComponent : Component
     {
-        public delegate void Activated(ActiveComponent c, Target e);
-
         public event Activated ComponentActivated;
+        public delegate void Activated(ActiveComponent c, CreatureTarget e);
+        
+        /// <summary>
+        /// Actives the component and decides what the influential stats are
+        /// </summary>
         public abstract void Activate();
 
-        protected void RaiseActivatedEvent(Target e)
+        /// <summary>
+        /// This method will only be called by implementation of Activate
+        /// </summary>
+        /// <param name="e">The influential stats for the Target Creature</param>
+        protected void RaiseActivatedEvent(CreatureTarget e)
         {
             ComponentActivated?.Invoke(this, e);
         }

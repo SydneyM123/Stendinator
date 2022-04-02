@@ -5,9 +5,7 @@
     /// </summary>
     public class InfluentialStats
     {
-        public int HealthDecrease { get; set; }
-        public int HealthIncrease { get; set; }
-        public int DefenseDecrease { get; set; }
-        public int DefenseIncrease { get; set; }
+        public int Health { get; set; }
+        public int Defense { get; set; }
     }
 }

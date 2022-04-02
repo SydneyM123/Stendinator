@@ -7,8 +7,8 @@ namespace Stendinator.Core.Components.Legs
         public BalancedLeg()
         {
             PassiveStats = new InfluentialStats();
-            PassiveStats.HealthIncrease += 13;
-            PassiveStats.DefenseIncrease += 12;
+            PassiveStats.Health += 13 * GameState.Instance.CurrentStage;
+            PassiveStats.Defense += 12 * GameState.Instance.CurrentStage;
         }
     }
 }

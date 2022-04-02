@@ -31,15 +31,16 @@ namespace Stendinator.Core.Planets.Factories
             switch (name)
             {
             case nameof(AlienPlanet):
-                    planet = new AlienPlanet(new RandomAlienFactory(), amountOfEnemies);
+                    //planet = new AlienPlanet(new RandomAlienFactory(), amountOfEnemies);
                     break;
                 case nameof(CyborgPlanet):
-                    planet = new AlienPlanet(new RandomCyborgFactory(), amountOfEnemies);
+                    //planet = new AlienPlanet(new RandomCyborgFactory(), amountOfEnemies);
                     break;
                 default:
                     throw new Exception("Planet not found...");
             }
-            return planet;
+
+            return null; //planet;
         }
     }
 }

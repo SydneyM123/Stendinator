@@ -7,8 +7,8 @@ namespace Stendinator.Core.Components.Heads
         public SturdyHead()
         {
             PassiveStats = new InfluentialStats();
-            PassiveStats.HealthIncrease += 10;
-            PassiveStats.DefenseIncrease += 20;
+            PassiveStats.Health += 10 * GameState.Instance.CurrentStage;
+            PassiveStats.Defense += 20 * GameState.Instance.CurrentStage;
         }
     }
 }

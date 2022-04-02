@@ -8,24 +8,20 @@ namespace Stendinator.Core.Components.Arms
         public FlameThrowerArm()
         {
             PassiveStats = new InfluentialStats();
-            PassiveStats.HealthIncrease += 8;
-            PassiveStats.DefenseIncrease += 7;
+            PassiveStats.Health += 8 * GameState.Instance.CurrentStage;
+            PassiveStats.Defense += 7 * GameState.Instance.CurrentStage;
         }
+
         public override void Activate()
         {
-            RaiseActivatedEvent(new Entity
+            RaiseActivatedEvent(new CreatureTarget
             {
                 Consequences = new InfluentialStats
                 {
-                    HealthDecrease = 10,
-                    DefenseDecrease = 5
+                    Health = -10 * GameState.Instance.CurrentStage,
+                    Defense = -5 * GameState.Instance.CurrentStage
                 }
-            }); 
-        }
-
-        public InfluentialStats getPassiveStats()
-        {
-            return PassiveStats;
+            });
         }
     }
 }

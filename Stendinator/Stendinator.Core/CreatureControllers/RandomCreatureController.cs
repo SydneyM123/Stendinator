@@ -15,12 +15,12 @@ namespace Stendinator.Core.CreatureControllers
         {
         }
 
-        public void Act(Target target)
+        public void Act(CreatureTarget creatureTarget)
         {
             var random = new Random();
             if (_creature == null) throw new EntityNotSet();
             var componentArray = (ActiveComponent[]) _creature.Components.Where(component => component.GetType() == typeof(ActiveComponent)).ToArray();
-            _creature.HandleActivatedComponent(componentArray[random.Next(componentArray.Length - 1)], target);
+            _creature.HandleActivatedComponent(componentArray[random.Next(componentArray.Length - 1)], creatureTarget);
         }
 
         public void SetCreatureToControl(Creature e)

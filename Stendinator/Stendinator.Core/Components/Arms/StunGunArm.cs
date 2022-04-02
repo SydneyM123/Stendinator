@@ -8,18 +8,18 @@ namespace Stendinator.Core.Components.Arms
         public StunGunArm()
         {
             PassiveStats = new InfluentialStats();
-            PassiveStats.HealthIncrease += 10;
-            PassiveStats.DefenseIncrease += 5;
+            PassiveStats.Health += 10 * GameState.Instance.CurrentStage;
+            PassiveStats.Defense += 5 * GameState.Instance.CurrentStage;
         }
 
         public override void Activate()
         {
-            RaiseActivatedEvent(new Entity
+            RaiseActivatedEvent(new CreatureTarget
             {
                 Consequences = new InfluentialStats
                 {
-                    HealthDecrease = 5,
-                    DefenseDecrease = 15
+                    Health = -5 * GameState.Instance.CurrentStage,
+                    Defense = -15 * GameState.Instance.CurrentStage
                 }
             });
         }

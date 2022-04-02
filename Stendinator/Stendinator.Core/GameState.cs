@@ -1,6 +1,4 @@
-﻿using System;
-using System.Linq;
-using Stendinator.Core.Components;
+﻿using Stendinator.Core.Components;
 using Stendinator.Core.Components.Arms;
 using Stendinator.Core.Components.Heads;
 using Stendinator.Core.Components.Legs;
@@ -9,6 +7,11 @@ namespace Stendinator.Core
 {
     internal class GameState
     {
+        /// <summary>
+        /// Singleton pattern (doesn't count but is still useful in our implementation)
+        /// </summary>
+        public static GameState Instance { get; set; } = new();
+
         public Turn Turn { get; set; }
         public int CurrentStage { get; set; }
         public Component[] EquipableComponents { get; set; }

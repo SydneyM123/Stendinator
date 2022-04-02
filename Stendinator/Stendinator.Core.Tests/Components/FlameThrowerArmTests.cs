@@ -11,7 +11,7 @@ namespace Stendinator.Core.Tests.Components
         public void GetHealthIncrease()
         {
             var arm = new FlameThrowerArm();
-            Assert.AreEqual(8, arm.PassiveStats.HealthIncrease);
+            Assert.AreEqual(8, arm.PassiveStats.Health);
         }
     }
 }

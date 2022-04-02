@@ -6,6 +6,6 @@ namespace Stendinator.Core.CreatureControllers
     internal interface ICreatureController
     {
         void SetCreatureToControl(Creature e);
-        void Act(Target target);
+        void Act(CreatureTarget creatureTarget);
     }
 }

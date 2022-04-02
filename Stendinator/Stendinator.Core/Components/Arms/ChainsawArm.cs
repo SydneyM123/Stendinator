@@ -8,16 +8,17 @@ namespace Stendinator.Core.Components.Arms
         public ChainsawArm()
         {
             PassiveStats = new InfluentialStats();
-            PassiveStats.HealthIncrease += 5;
-            PassiveStats.DefenseIncrease += 10;
+            PassiveStats.Health += 5 * GameState.Instance.CurrentStage;
+            PassiveStats.Defense += 10 * GameState.Instance.CurrentStage;
         }
+
         public override void Activate()
         {
-            RaiseActivatedEvent(new Entity
+            RaiseActivatedEvent(new CreatureTarget
             {
                 Consequences = new InfluentialStats
                 {
-                    HealthDecrease = 17
+                    Health = -17 * GameState.Instance.CurrentStage
                 }
             });
         }

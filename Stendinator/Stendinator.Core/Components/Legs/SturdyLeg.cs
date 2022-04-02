@@ -7,8 +7,8 @@ namespace Stendinator.Core.Components.Legs
         public SturdyLeg()
         {
             PassiveStats = new InfluentialStats();
-            PassiveStats.HealthIncrease += 5;
-            PassiveStats.DefenseIncrease += 15;
+            PassiveStats.Health += 5 * GameState.Instance.CurrentStage;
+            PassiveStats.Defense += 15 * GameState.Instance.CurrentStage;
         }
     }
 }

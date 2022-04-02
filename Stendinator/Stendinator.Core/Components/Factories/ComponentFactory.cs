@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using Stendinator.Core.Components.Arms;
+using Stendinator.Core.Components.Body;
 using Stendinator.Core.Components.Heads;
 using Stendinator.Core.Components.Legs;
 

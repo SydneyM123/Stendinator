@@ -1,14 +1,14 @@
 ﻿using Stendinator.Core.CreatureStats;
 
-namespace Stendinator.Core.Components.Heads
+namespace Stendinator.Core.Components.Body
 {
     public class SturdyBody : Component
     {
         public SturdyBody()
         {
             PassiveStats = new InfluentialStats();
-            PassiveStats.HealthIncrease += 20;
-            PassiveStats.DefenseIncrease += 40;
+            PassiveStats.Health += 20 * GameState.Instance.CurrentStage;
+            PassiveStats.Defense += 40 * GameState.Instance.CurrentStage;
         }
     }
 }

@@ -8,17 +8,17 @@ namespace Stendinator.Core.Components.Arms
         public HealingArm()
         {
             PassiveStats = new InfluentialStats();
-            PassiveStats.HealthIncrease += 25;
-            PassiveStats.DefenseIncrease += 5;
+            PassiveStats.Health += 25 * GameState.Instance.CurrentStage;
+            PassiveStats.Defense += 5 * GameState.Instance.CurrentStage;
         }
 
         public override void Activate()
         {
-            RaiseActivatedEvent(new Entity
+            RaiseActivatedEvent(new CreatureTarget
             {
                 Consequences = new InfluentialStats
                 {
-                    HealthIncrease = 15
+                    Health = 15 * GameState.Instance.CurrentStage
                 }
             });
         }
