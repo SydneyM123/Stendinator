@@ -137,27 +137,21 @@
     <Compile Include="Components\Body\BalancedBody.cs" />
     <Compile Include="Components\Body\SturdyBody.cs" />
     <Compile Include="Components\Body\HealthyBody.cs" />
-    <Compile Include="Components\Factories\ConcreteFactories\ConcreteBalancedBody.cs" />
-    <Compile Include="Components\Factories\ConcreteFactories\ConcreteBalancedHead.cs" />
-    <Compile Include="Components\Factories\ConcreteFactories\ConcreteBalancedLeg.cs" />
-    <Compile Include="Components\Factories\ConcreteFactories\ConcreteChainSawArm.cs" />
-    <Compile Include="Components\Factories\ConcreteFactories\ConcreteFlameThrowerArm.cs" />
-    <Compile Include="Components\Factories\ConcreteFactories\ConcreteHealingArm.cs" />
-    <Compile Include="Components\Factories\ConcreteFactories\ConcreteHealthyBody.cs" />
-    <Compile Include="Components\Factories\ConcreteFactories\ConcreteHealthyHead.cs" />
-    <Compile Include="Components\Factories\ConcreteFactories\ConcreteHealthyLeg.cs" />
-    <Compile Include="Components\Factories\ConcreteFactories\ConcreteShieldArm.cs" />
-    <Compile Include="Components\Factories\ConcreteFactories\ConcreteStunGunArm.cs" />
-    <Compile Include="Components\Factories\ConcreteFactories\ConcreteSturdyBody.cs" />
-    <Compile Include="Components\Factories\ConcreteFactories\ConcreteSturdyHead.cs" />
-    <Compile Include="Components\Factories\ConcreteFactories\ConcreteSturdyLeg.cs" />
+    <Compile Include="Components\Factories\AbstractComponentFactories\BalancedComponentFactory.cs" />
+    <Compile Include="Components\Factories\AbstractComponentFactories\HealthyComponentFactory.cs" />
+    <Compile Include="Components\Factories\AbstractComponentFactories\SturdyComponentFactory.cs" />
+    <Compile Include="Components\Factories\ConcreteComponentFactories\ConcreteChainSawArm.cs" />
+    <Compile Include="Components\Factories\ConcreteComponentFactories\ConcreteFlameThrowerArm.cs" />
+    <Compile Include="Components\Factories\ConcreteComponentFactories\ConcreteHealingArm.cs" />
+    <Compile Include="Components\Factories\ConcreteComponentFactories\ConcreteShieldArm.cs" />
+    <Compile Include="Components\Factories\ConcreteComponentFactories\ConcreteStunGunArm.cs" />
     <Compile Include="Components\Heads\BalancedHead.cs" />
     <Compile Include="Components\Heads\HealthyHead.cs" />
     <Compile Include="Components\Heads\SturdyHead.cs" />
     <Compile Include="Components\Legs\BalancedLeg.cs" />
     <Compile Include="Components\Legs\HealthyLeg.cs" />
     <Compile Include="Components\Legs\SturdyLeg.cs" />
-    <Compile Include="Components\Factories\IComponentFactory.cs" />
+    <Compile Include="Components\Factories\IAbstractComponentFactory.cs" />
     <Compile Include="Components\Targets\CreatureTarget.cs" />
     <Compile Include="CreatureControllers\ICreatureController.cs" />
     <Compile Include="CreatureControllers\RandomCreatureController.cs" />
@@ -188,7 +182,6 @@
       <Version>6.2.12</Version>
     </PackageReference>
   </ItemGroup>
-  <ItemGroup />
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">
     <VisualStudioVersion>14.0</VisualStudioVersion>
   </PropertyGroup>
