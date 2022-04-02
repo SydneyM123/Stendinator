@@ -1,35 +1,40 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using Stendinator.Core.Components;
-using Stendinator.Core.Components.Targets;
+﻿using Stendinator.Core.Components;
 using Stendinator.Core.Creatures;
 
 namespace Stendinator.Core.CreatureControllers
 {
-    internal class RandomCreatureController : ICreatureController
+    public class RandomCreatureController : ICreatureController
     {
+        private readonly Random _random;
+
         private Creature _creature;
 
-        public RandomCreatureController()
+        public event EventHandler? NoActiveComponents;
+        public event ComponentUsed? ComponentUsed;
+
+        public RandomCreatureController(Creature creature)
         {
+            _creature = creature;
+            _random = new Random();
         }
 
-        public void Act(CreatureTarget creatureTarget)
+        public void Act()
         {
-            var random = new Random();
-            if (_creature == null) throw new EntityNotSet();
-            var componentArray = (ActiveComponent[]) _creature.Components.Where(component => component.GetType() == typeof(ActiveComponent)).ToArray();
-            _creature.HandleActivatedComponent(componentArray[random.Next(componentArray.Length - 1)], creatureTarget);
+            var activeComponents = _creature.Components.Where(c => c.GetType().IsSubclassOf(typeof(ActiveComponent))).Cast<ActiveComponent>().ToArray();
+            if (activeComponents.Any())
+            {
+                var ac = activeComponents[_random.Next(activeComponents.Length - 1)];
+                ac.Activate();
+                ComponentUsed?.Invoke(ac);
+            }
+            else NoActiveComponents?.Invoke(this, EventArgs.Empty);
         }
 
         public void SetCreatureToControl(Creature e)
         {
             _creature = e;
         }
-
-        internal class EntityNotSet : Exception
-        {
-        }
     }
+
+    public delegate void ComponentUsed(ActiveComponent ac);
 }

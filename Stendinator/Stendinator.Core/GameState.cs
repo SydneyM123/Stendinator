@@ -1,11 +1,8 @@
 ﻿using Stendinator.Core.Components;
-using Stendinator.Core.Components.Arms;
-using Stendinator.Core.Components.Heads;
-using Stendinator.Core.Components.Legs;
 
 namespace Stendinator.Core
 {
-    internal class GameState
+    public class GameState
     {
         /// <summary>
         /// Singleton pattern (doesn't count but is still useful in our implementation)
@@ -14,25 +11,18 @@ namespace Stendinator.Core
 
         public Turn Turn { get; set; }
         public int CurrentStage { get; set; }
-        public Component[] EquipableComponents { get; set; }
+        public List<Component> Components { get; set; }
 
         public GameState()
         {
-            EquipableComponents = new Component[] { new ChainsawArm(), new ChainsawArm(), new BalancedBody(), new BalancedHead(), new BalancedLeg() };
+            Components = new List<Component>();
             CurrentStage = 1;
             Turn = Turn.Player;
         }
 
-        public Turn GetNextTurn()
+        public void NextTurn()
         {
-            if (Turn == Turn.Player)
-            {
-                Turn = Turn.Enemy;
-                return Turn;
-            }
-
-            Turn = Turn.Player;
-            return Turn;
+            Turn = Turn == Turn.Player ? Turn.Enemy : Turn.Player;
         }
     }
 }

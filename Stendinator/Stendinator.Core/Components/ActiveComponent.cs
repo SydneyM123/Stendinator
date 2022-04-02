@@ -1,12 +1,17 @@
 ﻿using Stendinator.Core.Components.Targets;
+using Stendinator.Core.CreatureStats;
 
 namespace Stendinator.Core.Components
 {
     public abstract class ActiveComponent : Component
     {
-        public event Activated ComponentActivated;
+        public event Activated? ComponentActivated;
         public delegate void Activated(ActiveComponent c, CreatureTarget e);
-        
+
+        protected ActiveComponent(InfluentialStats passiveStats, bool malicious) : base(passiveStats, malicious)
+        {
+        }
+
         /// <summary>
         /// Actives the component and decides what the influential stats are
         /// </summary>

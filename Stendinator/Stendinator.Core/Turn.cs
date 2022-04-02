@@ -1,6 +1,6 @@
 ﻿namespace Stendinator.Core
 {
-    internal enum Turn
+    public enum Turn
     {
         Player,
         Enemy

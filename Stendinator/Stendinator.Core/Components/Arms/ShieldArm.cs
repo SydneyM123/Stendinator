@@ -5,21 +5,34 @@ namespace Stendinator.Core.Components.Arms
 {
     public sealed class ShieldArm : ActiveComponent
     {
-        public ShieldArm()
+        public ShieldArm(bool malicious) : base(new InfluentialStats
         {
-            PassiveStats = new InfluentialStats();
-            PassiveStats.Health += 15 * GameState.Instance.CurrentStage;
-            PassiveStats.Defense += 15 * GameState.Instance.CurrentStage;
+            Health = 15 * GameState.Instance.CurrentStage,
+            Defense = 15 * GameState.Instance.CurrentStage
+        }, malicious)
+        {
+            if (malicious)
+            {
+                PassiveStats.Health = (int)Math.Ceiling(PassiveStats.Health * 0.8);
+            }
         }
+
         public override void Activate()
         {
-            RaiseActivatedEvent(new CreatureTarget
+            var health = 0 * GameState.Instance.CurrentStage;
+            var defense = 15 * GameState.Instance.CurrentStage;
+
+            if (Malicious)
             {
-                Consequences = new InfluentialStats
-                {
-                    Defense = 15 * GameState.Instance.CurrentStage
-                }
-            });
+                health = (int)Math.Ceiling(health * 0.0);
+                defense = (int)Math.Ceiling(defense * 0.0);
+            }
+
+            RaiseActivatedEvent(new CreatureTarget(new InfluentialStats
+            {
+                Health = health,
+                Defense = defense
+            }));
         }
     }
 }

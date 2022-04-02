@@ -1,34 +1,24 @@
-﻿using System;
-using Stendinator.Core.Components.Factories;
+﻿using Stendinator.Core.Components.Factories;
 using Stendinator.Core.Creatures.Cyborgs;
 
 namespace Stendinator.Core.Creatures.Factories
 {
-    public class RandomCyborgFactory : IRandomCreatureFactory
+    public class RandomCyborgFactory : RandomCreatureFactory
     {
-        private readonly ComponentFactory _componentFactory = new ComponentFactory();
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <returns>Cyborg with all Components</returns>
-        public Creature Create()
+        public RandomCyborgFactory(IRandomComponentFactory randomComponentFactory) : base(randomComponentFactory)
         {
-            var cyborg = new Cyborg();
-            var random = new Random();
+        }
 
-            //Make 5 random components
-           
-                var getRandomName = _componentFactory.GetNames();
-                var range = getRandomName.Length - 1;
-                cyborg.AddLeftArm(_componentFactory.Create(getRandomName[random.Next(range)]));
-                cyborg.AddRightArm(_componentFactory.Create(getRandomName[random.Next(range)]));
-                cyborg.AddHead(_componentFactory.Create(getRandomName[random.Next(range)]));
-                cyborg.AddTorso(_componentFactory.Create(getRandomName[random.Next(range)]));
-                cyborg.AddLeftLeg(_componentFactory.Create(getRandomName[random.Next(range)]));
-                cyborg.AddRightLeg(_componentFactory.Create(getRandomName[random.Next(range)]));
-
-            return cyborg;
+        public override Creature Create()
+        {
+            var creature = new Cyborg();
+            creature.AddHead(RandomComponentFactory.GetRandomHead(true));
+            creature.AddTorso(RandomComponentFactory.GetRandomTorso(true));
+            creature.AddLeftArm(RandomComponentFactory.GetRandomArm(true));
+            creature.AddRightArm(RandomComponentFactory.GetRandomArm(true));
+            creature.AddLeftLeg(RandomComponentFactory.GetRandomLeg(true));
+            creature.AddRightLeg(RandomComponentFactory.GetRandomLeg(true));
+            return creature;
         }
     }
 }

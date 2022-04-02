@@ -1,12 +1,12 @@
 ﻿using Stendinator.Core.CreatureStats;
 
-namespace Stendinator.Core.Components.Heads
+namespace Stendinator.Core.Components.Bodies
 {
-    public class SturdyHead : Component
+    public class HealthyBody : Component
     {
-        public SturdyHead(bool malicious) : base(new InfluentialStats
+        public HealthyBody(bool malicious) : base(new InfluentialStats
         {
-            Health = 10 * GameState.Instance.CurrentStage,
+            Health = 40 * GameState.Instance.CurrentStage,
             Defense = 20 * GameState.Instance.CurrentStage
         }, malicious)
         {

@@ -1,43 +1,48 @@
-﻿using System;
-using Stendinator.Core.Creatures;
+﻿using Stendinator.Core.Creatures;
 using Stendinator.Core.Creatures.Factories;
 
 namespace Stendinator.Core.Planets
 {
     public abstract class Planet
     {
-        public event EventHandler PlanetIsBeaten;
+        private readonly Creature _player;
 
-        protected IRandomCreatureFactory CreatureFactory;
+        protected RandomCreatureFactory CreatureFactory;
         protected int NumberOfEnemies;
-        private Creature _currentEnemy;
 
-        protected Planet(IRandomCreatureFactory creatureFactory, int numberOfEnemies)
+        public event EventHandler? PlanetIsBeaten;
+        public event EventHandler? EnemyIsBeaten;
+        
+        public Creature CurrentEnemy;
+
+        protected Planet(RandomCreatureFactory creatureFactory, int numberOfEnemies, Creature player)
         {
+            if (numberOfEnemies <= 0) PlanetIsBeaten?.Invoke(this, EventArgs.Empty);
             CreatureFactory = creatureFactory;
             NumberOfEnemies = numberOfEnemies;
-            CreateCurrentCreature();
-            //events
-            //_fightState.EnemyIsBeaten += EnemyIsBeaten;
+            _player = player;
+            CurrentEnemy = CreatureFactory.Create();
+            CurrentEnemy.Target = _player;
+            _player.Target = CurrentEnemy;
+            CurrentEnemy.CreatureBeaten += HandleCreatureBeaten;
         }
 
-        public void EnemyIsBeaten(object s, EventArgs e)
+        /// <summary>
+        /// Remove current enemy and generate new enemy if NumberOfEnemies is greater than zero
+        /// </summary>
+        public void HandleCreatureBeaten(object? sender, EventArgs args)
         {
-            //Remove current enemy
             NumberOfEnemies--;
+            EnemyIsBeaten?.Invoke(this, EventArgs.Empty);
             if (NumberOfEnemies <= 0)
             {
-                PlanetIsBeaten?.Invoke(this, new EventArgs());
+                PlanetIsBeaten?.Invoke(this, EventArgs.Empty);
+                return;
             }
-            else
-            {
-                CreateCurrentCreature();
-            }
-        }
-
-        public void CreateCurrentCreature()
-        {
-            _currentEnemy = CreatureFactory.Create();
+            CurrentEnemy = CreatureFactory.Create();
+            CurrentEnemy.Target = _player;
+            CurrentEnemy.CreatureBeaten += HandleCreatureBeaten;
+            _player.Target = CurrentEnemy;
         }
     }
 }

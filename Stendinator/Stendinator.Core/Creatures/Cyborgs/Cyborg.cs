@@ -4,12 +4,12 @@ namespace Stendinator.Core.Creatures.Cyborgs
 {
     public class Cyborg : Creature
     {
-        private Component _leftArm;
-        private Component _rightArm;
-        private Component _torso;
-        private Component _head;
-        private Component _leftLeg;
-        private Component _rightLeg;
+        private Component? _leftArm;
+        private Component? _rightArm;
+        private Component? _torso;
+        private Component? _head;
+        private Component? _leftLeg;
+        private Component? _rightLeg;
 
         public Cyborg()
         {
@@ -51,19 +51,11 @@ namespace Stendinator.Core.Creatures.Cyborgs
             ChangeComponent(ref _leftLeg, component);
         }
 
-        private void ChangeComponent(ref Component oldComponent, Component newComponent)
+        private void ChangeComponent(ref Component? oldComponent, Component newComponent)
         {
-            if (oldComponent != null)
-            {
-                RemoveComponent(oldComponent);
-            }
+            if (oldComponent != null) RemoveComponent(oldComponent);
             oldComponent = newComponent;
             AddComponent(oldComponent);
-        }
-
-        public Component GetLeftArm()
-        {
-            return _leftArm;
         }
     }
 }

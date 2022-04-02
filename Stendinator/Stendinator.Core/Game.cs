@@ -1,9 +1,5 @@
-﻿using Stendinator.Core.Creatures;
-using System;
-using System.Linq;
-using Stendinator.Core.Components;
-using Stendinator.Core.Creatures.Builders;
-using Stendinator.Core.Creatures.Cyborgs;
+﻿using Stendinator.Core.Components.Factories;
+using Stendinator.Core.Creatures;
 using Stendinator.Core.Planets;
 using Stendinator.Core.Planets.Factories;
 
@@ -11,39 +7,53 @@ namespace Stendinator.Core
 {
     public class Game
     {
-        public Planet CurrentPlanet;
-        private Cyborg _player;
-        private CyborgBuilder _cyborgBuilder;
-        private GameState _state;
+        private readonly Creature _player;
+        private readonly Random _random;
         private readonly IRandomPlanetFactory _randomPlanetFactory;
+        private readonly IRandomComponentFactory _randomComponentFactory;
 
-        public Game(IRandomPlanetFactory levelFactory)
+        public Planet CurrentPlanet = null!;
+
+        public event EventHandler? PlanetIsBeaten;
+        public event EventHandler? EnemyIsBeaten;
+        
+        public Game(IRandomComponentFactory randomComponentFactory, IRandomPlanetFactory levelFactory, Creature player)
         {
+            _random = new Random();
+            _randomComponentFactory = randomComponentFactory;
             _randomPlanetFactory = levelFactory;
-            _cyborgBuilder = new CyborgBuilder();
-            _state = new GameState();
-            _cyborgBuilder.CreatePlayer(_state.EquipableComponents);
-            _player = new Cyborg();
-            _player = _cyborgBuilder.CreatePlayer(_state.EquipableComponents);
-        }
+            _player = player;
 
-        public void PlanetIsBeaten(object sender, EventArgs args)
-        {
-            //Remove current level
-            if (CurrentPlanet == null) return;
-            CurrentPlanet.PlanetIsBeaten -= PlanetIsBeaten;
-            _state.CurrentStage++;
             CreateNewLevel();
         }
 
+        /// <summary>
+        /// Removes the current level when planet is beaten
+        /// </summary>
+        public void HandlePlanetIsBeaten(object? sender, EventArgs args)
+        {
+            GameState.Instance.CurrentStage++;
+            CreateNewLevel();
+            PlanetIsBeaten?.Invoke(this, EventArgs.Empty);
+        }
+        
         public void CreateNewLevel()
         {
-            var random = new Random();
             var levelTypes = new[] { nameof(AlienPlanet), nameof(CyborgPlanet) };
-            //Generate new level
-            CurrentPlanet = _randomPlanetFactory.Create(_state.CurrentStage, levelTypes[random.Next(levelTypes.Length)]);
-            CurrentPlanet.PlanetIsBeaten += PlanetIsBeaten;
+            CurrentPlanet = _randomPlanetFactory.Create(levelTypes[_random.Next(levelTypes.Length)], _player);
+            CurrentPlanet.EnemyIsBeaten += (_, _) =>
+            {
+                _player.ResetStats();
+                DropComponents(_random.Next(1, 3));
+                EnemyIsBeaten?.Invoke(this, EventArgs.Empty);
+            };
+            CurrentPlanet.PlanetIsBeaten += HandlePlanetIsBeaten;
+        }
+
+        private void DropComponents(int amount)
+        {
+            for (var i = 0; i < amount; i++)
+                GameState.Instance.Components.Add(_randomComponentFactory.GetRandomComponent(false));
         }
     }
-
 }

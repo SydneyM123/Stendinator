@@ -1,11 +1,10 @@
-﻿using Stendinator.Core.Components.Targets;
-using Stendinator.Core.Creatures;
+﻿using Stendinator.Core.Creatures;
 
 namespace Stendinator.Core.CreatureControllers
 {
-    internal interface ICreatureController
+    public interface ICreatureController
     {
         void SetCreatureToControl(Creature e);
-        void Act(CreatureTarget creatureTarget);
+        void Act();
     }
 }

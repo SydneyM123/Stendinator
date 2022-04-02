@@ -4,11 +4,16 @@ namespace Stendinator.Core.Components.Legs
 {
     public class BalancedLeg : Component
     {
-        public BalancedLeg()
+        public BalancedLeg(bool malicious) : base(new InfluentialStats
         {
-            PassiveStats = new InfluentialStats();
-            PassiveStats.Health += 13 * GameState.Instance.CurrentStage;
-            PassiveStats.Defense += 12 * GameState.Instance.CurrentStage;
+            Health = 13 * GameState.Instance.CurrentStage,
+            Defense = 12 * GameState.Instance.CurrentStage
+        }, malicious)
+        {
+            if (malicious)
+            {
+                PassiveStats.Health = (int)Math.Ceiling(PassiveStats.Health * 0.8);
+            }
         }
     }
 }

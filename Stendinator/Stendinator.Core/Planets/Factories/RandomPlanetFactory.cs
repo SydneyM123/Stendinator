@@ -1,46 +1,26 @@
-﻿using System;
-using System.ComponentModel.Design;
+﻿using Stendinator.Core.Components.Factories;
+using Stendinator.Core.Creatures;
 using Stendinator.Core.Creatures.Factories;
 
 namespace Stendinator.Core.Planets.Factories
 {
     public class RandomPlanetFactory : IRandomPlanetFactory
     {
-        public Planet Create(int difficulty, string name)
+        private readonly IRandomComponentFactory _randomComponentFactory;
+        
+        public RandomPlanetFactory(IRandomComponentFactory randomComponentFactory)
         {
-            int amountOfEnemies;
+            _randomComponentFactory = randomComponentFactory;
+        }
 
-            if (difficulty < 10)
+        public Planet Create(string name, Creature player)
+        {
+            return name switch
             {
-                amountOfEnemies = 1;
-            }
-            else if (difficulty < 25)
-            {
-                amountOfEnemies = 2;
-            }
-            else if (difficulty < 50)
-            {
-                amountOfEnemies = 3;
-            }
-            else
-            {
-                amountOfEnemies = 4;
-            }
-
-            Planet planet;
-            switch (name)
-            {
-            case nameof(AlienPlanet):
-                    //planet = new AlienPlanet(new RandomAlienFactory(), amountOfEnemies);
-                    break;
-                case nameof(CyborgPlanet):
-                    //planet = new AlienPlanet(new RandomCyborgFactory(), amountOfEnemies);
-                    break;
-                default:
-                    throw new Exception("Planet not found...");
-            }
-
-            return null; //planet;
+                nameof(AlienPlanet) => new AlienPlanet(new RandomAlienFactory(_randomComponentFactory), GameState.Instance.CurrentStage, player),
+                nameof(CyborgPlanet) => new CyborgPlanet(new RandomCyborgFactory(_randomComponentFactory), GameState.Instance.CurrentStage, player),
+                _ => throw new Exception("Planet not found...")
+            };
         }
     }
 }
