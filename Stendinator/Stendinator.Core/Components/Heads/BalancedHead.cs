@@ -7,7 +7,7 @@ namespace Stendinator.Core.Components.Heads
         public BalancedHead(bool malicious) : base(new InfluentialStats
         {
             Health = 15 * GameState.Instance.CurrentStage,
-            Defense = 15 * GameState.Instance.CurrentStage
+            Defense = 8 * GameState.Instance.CurrentStage
         }, malicious)
         {
             if (malicious)

@@ -8,7 +8,7 @@ namespace Stendinator.Core.Components.Arms
         public FlameThrowerArm(bool malicious) : base(new InfluentialStats
         {
             Health = 8 * GameState.Instance.CurrentStage,
-            Defense = 7 * GameState.Instance.CurrentStage
+            Defense = 4 * GameState.Instance.CurrentStage
         }, malicious)
         {
             if (malicious)
@@ -24,8 +24,8 @@ namespace Stendinator.Core.Components.Arms
 
             if (Malicious)
             {
-                health = (int)Math.Ceiling(health * 0.0);
-                defense = (int)Math.Ceiling(defense * 0.0);
+                health = (int)Math.Ceiling(health * 0.5);
+                defense = (int)Math.Ceiling(defense * 0.5);
             }
 
             RaiseActivatedEvent(new CreatureTarget(new InfluentialStats

@@ -24,8 +24,8 @@ namespace Stendinator.Core.Components.Arms
 
             if (Malicious)
             {
-                health = (int)Math.Ceiling(health * 0.0);
-                defense = (int)Math.Ceiling(defense * 0.0);
+                health = (int)Math.Ceiling(health * 0.5);
+                defense = (int)Math.Ceiling(defense * 0.5);
             }
 
             RaiseActivatedEvent(new CreatureTarget(new InfluentialStats

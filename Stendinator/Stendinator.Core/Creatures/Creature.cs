@@ -21,7 +21,11 @@ namespace Stendinator.Core.Creatures
         public int Defense
         {
             get => _defense;
-            set => _defense += value;
+            set
+            {
+                _defense += value;
+                if (_defense < 0) _defense = 0;
+            }
         }
 
         public event EventHandler? CreatureBeaten;
@@ -96,8 +100,9 @@ namespace Stendinator.Core.Creatures
         private void InfluenceOnTarget(CreatureTarget e)
         {
             if (Target == null) return;
-            Target.Health = e.Consequences.Health;
             Target.Defense = e.Consequences.Defense;
+            var totalDmg = e.Consequences.Health + Target.Defense;
+            if (totalDmg < 0) Target.Health = totalDmg;
         }
 
         private void InfluenceOnSelf(CreatureTarget e)

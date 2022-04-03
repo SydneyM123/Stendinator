@@ -8,7 +8,7 @@ namespace Stendinator.Core.Components.Arms
         public ChainsawArm(bool malicious) : base(new InfluentialStats
         {
             Health = 5 * GameState.Instance.CurrentStage,
-            Defense = 10 * GameState.Instance.CurrentStage
+            Defense = 5 * GameState.Instance.CurrentStage
         }, malicious)
         {
             if (malicious)
@@ -19,13 +19,13 @@ namespace Stendinator.Core.Components.Arms
 
         public override void Activate()
         {
-            var health = -17 * GameState.Instance.CurrentStage;
             var defense = 0 * GameState.Instance.CurrentStage;
+            var health = (-17) * GameState.Instance.CurrentStage;
 
             if (Malicious)
             {
-                health = (int)Math.Ceiling(health * 0.0);
-                defense = (int)Math.Ceiling(defense * 0.0);
+                health = (int)Math.Ceiling(health * 0.5);
+                defense = (int)Math.Ceiling(defense * 0.5);
             }
 
             RaiseActivatedEvent(new CreatureTarget(new InfluentialStats

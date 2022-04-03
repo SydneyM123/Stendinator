@@ -20,12 +20,12 @@ namespace Stendinator.Core.Components.Arms
         public override void Activate()
         {
             var health = -5 * GameState.Instance.CurrentStage;
-            var defense = -15 * GameState.Instance.CurrentStage;
+            var defense = -5 * GameState.Instance.CurrentStage;
 
             if (Malicious)
             {
-                health = (int)Math.Ceiling(health * 0.0);
-                defense = (int)Math.Ceiling(defense * 0.0);
+                health = (int)Math.Ceiling(health * 0.5);
+                defense = (int)Math.Ceiling(defense * 0.5);
             }
 
             RaiseActivatedEvent(new CreatureTarget(new InfluentialStats

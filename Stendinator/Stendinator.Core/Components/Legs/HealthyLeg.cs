@@ -7,7 +7,7 @@ namespace Stendinator.Core.Components.Legs
         public HealthyLeg(bool malicious) : base(new InfluentialStats
         {
             Health = 15 * GameState.Instance.CurrentStage,
-            Defense = 5 * GameState.Instance.CurrentStage
+            Defense = 3 * GameState.Instance.CurrentStage
         }, malicious)
         {
             if (malicious)
