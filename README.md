@@ -7,3 +7,4 @@ Toegepaste design patterns:
 - Builder
 - Strategy
 - Observer
+- Decorator
