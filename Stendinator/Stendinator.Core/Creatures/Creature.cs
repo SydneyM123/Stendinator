@@ -7,7 +7,7 @@ namespace Stendinator.Core.Creatures
     public abstract class Creature
     {
         private int _health;
-        public int Health
+        public virtual int Health
         {
             get => _health;
             set
@@ -18,7 +18,7 @@ namespace Stendinator.Core.Creatures
         }
 
         private int _defense;
-        public int Defense
+        public virtual int Defense
         {
             get => _defense;
             set
@@ -30,12 +30,21 @@ namespace Stendinator.Core.Creatures
 
         public event EventHandler? CreatureBeaten;
         
-        public Component[] Components { get; private set; }
+        public virtual Component[] Components { get; set; } = Array.Empty<Component>();
 
         /// <summary>
         /// The entity this entity will be focused on.
         /// </summary>
-        public Creature? Target { get; set; }
+        public virtual Creature? Target { get; set; }
+
+        /// <summary>
+        /// In order to not set the target as a decorated creature,
+        /// this method should be called instead of assigning the object
+        /// </summary>
+        public virtual Creature Instance()
+        {
+            return this;
+        }
 
         public void ResetStats()
         {
@@ -46,11 +55,6 @@ namespace Stendinator.Core.Creatures
                 Health = component.PassiveStats.Health;
                 Defense = component.PassiveStats.Defense;
             }
-        }
-
-        protected Creature()
-        {
-            Components = Array.Empty<Component>();
         }
 
         /// <summary>

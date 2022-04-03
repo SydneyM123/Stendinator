@@ -3,13 +3,16 @@ using Stendinator.Core.Creatures.Cyborgs;
 
 namespace Stendinator.Core.Creatures.Factories
 {
-    public class RandomCyborgFactory : RandomCreatureFactory
+    public class RandomCyborgFactory : IRandomCreatureFactory
     {
-        public RandomCyborgFactory(IRandomComponentFactory randomComponentFactory) : base(randomComponentFactory)
+        protected IRandomComponentFactory RandomComponentFactory;
+
+        public RandomCyborgFactory(IRandomComponentFactory randomComponentFactory)
         {
+            RandomComponentFactory = randomComponentFactory;
         }
 
-        public override Creature Create()
+        public virtual Creature Create()
         {
             var creature = new Cyborg();
             creature.AddHead(RandomComponentFactory.GetRandomHead(true));

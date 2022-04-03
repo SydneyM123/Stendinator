@@ -8,10 +8,10 @@ namespace Stendinator.Core.Components.Factories
         {
             return name switch
             {
-                nameof(ChainsawArm) => new StunGunArm(malicious),
-                nameof(FlameThrowerArm) => new StunGunArm(malicious),
-                nameof(HealingArm) => new StunGunArm(malicious),
-                nameof(ShieldArm) => new StunGunArm(malicious),
+                nameof(ChainsawArm) => new ChainsawArm(malicious),
+                nameof(FlameThrowerArm) => new FlameThrowerArm(malicious),
+                nameof(HealingArm) => new HealingArm(malicious),
+                nameof(ShieldArm) => new ShieldArm(malicious),
                 nameof(StunGunArm) => new StunGunArm(malicious),
                 _ => throw new Exception($"Component not found {name}")
             };

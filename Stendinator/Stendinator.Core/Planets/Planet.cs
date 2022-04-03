@@ -7,7 +7,7 @@ namespace Stendinator.Core.Planets
     {
         private readonly Creature _player;
 
-        protected RandomCreatureFactory CreatureFactory;
+        protected IRandomCreatureFactory CreatureFactory;
         protected int NumberOfEnemies;
 
         public event EventHandler? PlanetIsBeaten;
@@ -15,15 +15,15 @@ namespace Stendinator.Core.Planets
         
         public Creature CurrentEnemy;
 
-        protected Planet(RandomCreatureFactory creatureFactory, int numberOfEnemies, Creature player)
+        protected Planet(IRandomCreatureFactory creatureFactory, int numberOfEnemies, Creature player)
         {
             if (numberOfEnemies <= 0) PlanetIsBeaten?.Invoke(this, EventArgs.Empty);
             CreatureFactory = creatureFactory;
             NumberOfEnemies = numberOfEnemies;
-            _player = player;
+            _player = player.Instance();
             CurrentEnemy = CreatureFactory.Create();
-            CurrentEnemy.Target = _player;
-            _player.Target = CurrentEnemy;
+            CurrentEnemy.Target = _player.Instance();
+            _player.Target = CurrentEnemy.Instance();
             CurrentEnemy.CreatureBeaten += HandleCreatureBeaten;
         }
 
@@ -40,9 +40,9 @@ namespace Stendinator.Core.Planets
                 return;
             }
             CurrentEnemy = CreatureFactory.Create();
-            CurrentEnemy.Target = _player;
+            CurrentEnemy.Target = _player.Instance();
             CurrentEnemy.CreatureBeaten += HandleCreatureBeaten;
-            _player.Target = CurrentEnemy;
+            _player.Target = CurrentEnemy.Instance();
         }
     }
 }

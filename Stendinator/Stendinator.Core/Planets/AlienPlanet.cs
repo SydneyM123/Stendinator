@@ -5,7 +5,7 @@ namespace Stendinator.Core.Planets
 {
     public class AlienPlanet : Planet
     {
-        public AlienPlanet(RandomCreatureFactory creatureFactory, int numberOfEnemies, Creature player) : base(creatureFactory, numberOfEnemies, player)
+        public AlienPlanet(IRandomCreatureFactory creatureFactory, int numberOfEnemies, Creature player) : base(creatureFactory, numberOfEnemies, player)
         {
             CreatureFactory = creatureFactory;
             NumberOfEnemies = numberOfEnemies;

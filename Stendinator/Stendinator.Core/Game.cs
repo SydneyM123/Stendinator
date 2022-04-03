@@ -22,7 +22,7 @@ namespace Stendinator.Core
             _random = new Random();
             _randomComponentFactory = randomComponentFactory;
             _randomPlanetFactory = levelFactory;
-            _player = player;
+            _player = player.Instance();
 
             CreateNewLevel();
         }

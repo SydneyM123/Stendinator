@@ -1,4 +1,6 @@
-﻿using Stendinator.Console.Components.AbstractFactories;
+﻿using Stendinator.Console.Components;
+using Stendinator.Console.Components.AbstractFactories;
+using Stendinator.Console.Creatures.Factories;
 using Stendinator.Core;
 using Stendinator.Core.Components;
 using Stendinator.Core.Components.Factories;
@@ -16,18 +18,20 @@ namespace Stendinator.Console
         private static readonly AbstractComponentFactory AbstractComponentFactory = new();
         private static readonly ActiveComponentFactory ActiveComponentFactory = new();
         private static readonly RandomComponentFactory RandomComponentFactory = new();
+        private static readonly DecoratedRandomAlienFactory DecoratedRandomAlienFactory = new(RandomComponentFactory);
+        private static readonly DecoratedRandomCyborgFactory DecoratedRandomCyborgFactory = new(RandomComponentFactory);
 
-        private static Creature _player = null!;
+        private static DecoratedCreature _player = null!;
         private static RandomCreatureController _enemyController = null!;
 
         public static void Main(string[] _)
         {
             Intro();
-            _player = Build(AbstractComponentFactory);
-            CreatureDetails(_player);
+            _player = new DecoratedCreature(Build(AbstractComponentFactory));
+            _player.Print();
             ComponentDetails(_player.Components);
             PauseAndClear();
-            var game = new Game(RandomComponentFactory, new RandomPlanetFactory(RandomComponentFactory), _player);
+            var game = new Game(RandomComponentFactory, new RandomPlanetFactory(DecoratedRandomAlienFactory, DecoratedRandomCyborgFactory), _player);
             game.EnemyIsBeaten += EnemyIsBeaten;
             game.PlanetIsBeaten += (_, _) =>
             {
@@ -65,7 +69,7 @@ namespace Stendinator.Console
                         System.Console.WriteLine($"You have chosen {activeComponents[chosenActiveComponent].GetType().Name}\n");
                         activeComponents[chosenActiveComponent].Activate();
                         System.Console.WriteLine("Enemy stats:");
-                        CreatureDetails(game.CurrentPlanet.CurrentEnemy);
+                        ((DecoratedCreature)game.CurrentPlanet.CurrentEnemy).Print();
                         PauseAndClear();
                     }
                     else
@@ -79,7 +83,7 @@ namespace Stendinator.Console
                     System.Console.WriteLine("The enemy is attacking...");
                     _enemyController.Act();
                     System.Console.WriteLine("Your stats:");
-                    CreatureDetails(_player);
+                    _player.Print();
                 }
                 GameState.Instance.NextTurn();
             }
@@ -162,15 +166,6 @@ namespace Stendinator.Console
             System.Console.WriteLine("\n\nEnter to continue...");
             System.Console.ReadLine();
             System.Console.Clear();
-        }
-
-        private static void CreatureDetails(Creature creature)
-        {
-            System.Console.WriteLine
-            (
-                $"{creature.GetType().Name} (Health: {creature.Health}, Defense: {creature.Defense}):\n" +
-                $"Target: {creature.Target?.GetType().Name ?? "---"}\n"
-            );
         }
 
         private static void ComponentDetails(IEnumerable<Component> components)
