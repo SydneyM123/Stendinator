@@ -1,5 +1,5 @@
 # Stendinator
-A game where you fight aliens and robots!
+A game where you fight aliens and Cyborgs (as a Cyborg)!
 
 Toegepaste design patterns:
 
