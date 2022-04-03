@@ -20,7 +20,7 @@ namespace Stendinator.Core.Components.Arms
         public override void Activate()
         {
             var defense = 0 * GameState.Instance.CurrentStage;
-            var health = (-17) * GameState.Instance.CurrentStage;
+            var health = (-30) * GameState.Instance.CurrentStage;
 
             if (Malicious)
             {
