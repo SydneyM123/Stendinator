@@ -22,15 +22,15 @@ namespace Stendinator.Core.Planets
             NumberOfEnemies = numberOfEnemies;
             _player = player.Instance();
             CurrentEnemy = CreatureFactory.Create();
-            CurrentEnemy.Target = _player.Instance();
-            _player.Target = CurrentEnemy.Instance();
-            CurrentEnemy.CreatureBeaten += HandleCreatureBeaten;
+            CurrentEnemy.Instance().Target = _player.Instance();
+            _player.Instance().Target = CurrentEnemy.Instance();
+            CurrentEnemy.Instance().CreatureBeaten += HandleCreatureBeaten;
         }
 
         /// <summary>
         /// Remove current enemy and generate new enemy if NumberOfEnemies is greater than zero
         /// </summary>
-        public void HandleCreatureBeaten(object? sender, EventArgs args)
+        private void HandleCreatureBeaten(object? sender, EventArgs args)
         {
             NumberOfEnemies--;
             EnemyIsBeaten?.Invoke(this, EventArgs.Empty);
@@ -39,10 +39,11 @@ namespace Stendinator.Core.Planets
                 PlanetIsBeaten?.Invoke(this, EventArgs.Empty);
                 return;
             }
+            CurrentEnemy.Instance().CreatureBeaten -= HandleCreatureBeaten;
             CurrentEnemy = CreatureFactory.Create();
-            CurrentEnemy.Target = _player.Instance();
-            CurrentEnemy.CreatureBeaten += HandleCreatureBeaten;
-            _player.Target = CurrentEnemy.Instance();
+            CurrentEnemy.Instance().Target = _player.Instance();
+            _player.Instance().Target = CurrentEnemy.Instance();
+            CurrentEnemy.Instance().CreatureBeaten += HandleCreatureBeaten;
         }
     }
 }

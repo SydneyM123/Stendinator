@@ -1,4 +1,5 @@
 ﻿using Stendinator.Core.Components;
+using Stendinator.Core.Components.Buffs;
 
 namespace Stendinator.Core.Creatures.Cyborgs
 {

@@ -5,33 +5,32 @@ namespace Stendinator.Core.Components.Arms
 {
     public sealed class StunGunArm : ActiveComponent
     {
-        public StunGunArm(bool malicious) : base(new InfluentialStats
-        {
-            Health = 10 * GameState.Instance.CurrentStage,
-            Defense = 5 * GameState.Instance.CurrentStage
-        }, malicious)
-        {
-            if (malicious)
+        public StunGunArm(bool malicious) : base
+        (
+            new InfluentialStats
             {
-                PassiveStats.Health = (int)Math.Ceiling(PassiveStats.Health * 0.8);
-            }
+                Health = -10 * GameState.Instance.CurrentStage,
+                Defense = -20 * GameState.Instance.CurrentStage
+            },
+            new InfluentialStats
+            {
+                Health = 10 * GameState.Instance.CurrentStage,
+                Defense = 5 * GameState.Instance.CurrentStage
+            },
+            malicious
+        )
+        {
+            if (!Malicious) return;
+            Actives.Health = (int)Math.Ceiling(Actives.Health * 0.5);
+            Actives.Defense = (int)Math.Ceiling(Actives.Defense * 0.5);
         }
 
         public override void Activate()
         {
-            var health = -10 * GameState.Instance.CurrentStage;
-            var defense = -20 * GameState.Instance.CurrentStage;
-
-            if (Malicious)
-            {
-                health = (int)Math.Ceiling(health * 0.5);
-                defense = (int)Math.Ceiling(defense * 0.5);
-            }
-
             RaiseActivatedEvent(new CreatureTarget(new InfluentialStats
             {
-                Health = health,
-                Defense = defense
+                Health = Actives.Health,
+                Defense = Actives.Defense
             }));
         }
     }

@@ -5,20 +5,22 @@ namespace Stendinator.Core.Creatures.Factories
 {
     public class RandomAlienFactory : IRandomCreatureFactory
     {
+        private readonly Random _random = new();
+        
         private readonly int _maxComponent;
 
-        protected IRandomComponentFactory RandomComponentFactory;
+        private readonly IRandomComponentFactory _randomComponentFactory;
 
-        public RandomAlienFactory(IRandomComponentFactory randomComponentFactory)
+        protected RandomAlienFactory(IRandomComponentFactory randomComponentFactory)
         {
-            RandomComponentFactory = randomComponentFactory;
-            _maxComponent = new Random().Next(1, 7);
+            _randomComponentFactory = randomComponentFactory;
+            _maxComponent = _random.Next(1, 7);
         }
 
         public virtual Creature Create()
         {
             var creature = new Alien();
-            for (var i = 0; i < _maxComponent; i++) creature.AddComponent(RandomComponentFactory.GetRandomComponent(true));
+            for (var i = 0; i < _maxComponent; i++) creature.AddComponent(_randomComponentFactory.GetRandomComponent(true));
             return creature;
         }
     }

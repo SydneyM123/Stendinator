@@ -5,15 +5,15 @@ using Stendinator.Core.Creatures.Factories;
 
 namespace Stendinator.Console.Creatures.Factories
 {
-    internal class DecoratedRandomCyborgFactory : RandomCyborgFactory
+    internal class ConsoleRandomAlienFactory : RandomAlienFactory
     {
-        public DecoratedRandomCyborgFactory(IRandomComponentFactory randomComponentFactory) : base(randomComponentFactory)
+        public ConsoleRandomAlienFactory(IRandomComponentFactory randomComponentFactory) : base(randomComponentFactory)
         {
         }
 
         public override Creature Create()
         {
-            return new DecoratedCreature(base.Create());
+            return new ConsoleCreature(base.Create());
         }
     }
 }

@@ -12,7 +12,7 @@ namespace Stendinator.Core.Components.Heads
         {
             if (malicious)
             {
-                PassiveStats.Health = (int)Math.Ceiling(PassiveStats.Health * 0.8);
+                Passives.Health = (int)Math.Ceiling(Passives.Health * 0.8);
             }
         }
     }

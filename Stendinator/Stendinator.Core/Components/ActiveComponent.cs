@@ -8,8 +8,11 @@ namespace Stendinator.Core.Components
         public event Activated? ComponentActivated;
         public delegate void Activated(ActiveComponent c, CreatureTarget e);
 
-        protected ActiveComponent(InfluentialStats passiveStats, bool malicious) : base(passiveStats, malicious)
+        public InfluentialStats Actives { get; }
+
+        protected ActiveComponent(InfluentialStats actives, InfluentialStats passives, bool malicious) : base(passives, malicious)
         {
+            Actives = actives;
         }
 
         /// <summary>

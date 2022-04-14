@@ -52,7 +52,7 @@ namespace Stendinator.Console.Components.AbstractFactories
             };
         }
 
-        public string[] GetHeadNames()
+        public static string[] GetHeadNames()
         {
             return new[]
             {
@@ -62,7 +62,7 @@ namespace Stendinator.Console.Components.AbstractFactories
             };
         }
 
-        public string[] GetLegNames()
+        public static string[] GetLegNames()
         {
             return new[]
             {
@@ -72,7 +72,7 @@ namespace Stendinator.Console.Components.AbstractFactories
             };
         }
 
-        public string[] GetBodyNames()
+        public static string[] GetBodyNames()
         {
             return new[]
             {

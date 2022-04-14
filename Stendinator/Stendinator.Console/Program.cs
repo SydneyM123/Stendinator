@@ -12,26 +12,27 @@ using static System.Int32;
 
 namespace Stendinator.Console
 {
-    public class Program
+    public static class Program
     {
+        private static readonly Random DropRng = new();
         private static readonly CyborgBuilder Builder = new();
         private static readonly AbstractComponentFactory AbstractComponentFactory = new();
         private static readonly ActiveComponentFactory ActiveComponentFactory = new();
         private static readonly RandomComponentFactory RandomComponentFactory = new();
-        private static readonly DecoratedRandomAlienFactory DecoratedRandomAlienFactory = new(RandomComponentFactory);
-        private static readonly DecoratedRandomCyborgFactory DecoratedRandomCyborgFactory = new(RandomComponentFactory);
+        private static readonly ConsoleRandomAlienFactory ConsoleRandomAlienFactory = new(RandomComponentFactory);
+        private static readonly ConsoleRandomCyborgFactory ConsoleRandomCyborgFactory = new(RandomComponentFactory);
 
-        private static DecoratedCreature _player = null!;
+        private static ConsoleCreature _player = null!;
         private static RandomCreatureController _enemyController = null!;
 
         public static void Main(string[] _)
         {
             Intro();
-            _player = new DecoratedCreature(Build(AbstractComponentFactory));
+            _player = new ConsoleCreature(Build(AbstractComponentFactory));
             _player.Print();
             ComponentDetails(_player.Components);
             PauseAndClear();
-            var game = new Game(RandomComponentFactory, new RandomPlanetFactory(DecoratedRandomAlienFactory, DecoratedRandomCyborgFactory), _player);
+            var game = new Game(RandomComponentFactory, new RandomPlanetFactory(ConsoleRandomAlienFactory, ConsoleRandomCyborgFactory), _player);
             game.EnemyIsBeaten += EnemyIsBeaten;
             game.PlanetIsBeaten += (_, _) =>
             {
@@ -46,10 +47,10 @@ namespace Stendinator.Console
             };
             _enemyController.ComponentUsed += (ac) =>
             {
-                System.Console.WriteLine($"\n\nThe enemy used {ac.GetType().Name}");
+                System.Console.WriteLine($"\n\nThe enemy used {ac.Instance().GetType().Name}");
                 PauseAndClear();
             };
-            _player.CreatureBeaten += (_, _) =>
+            _player.Instance().CreatureBeaten += (_, _) =>
             {
                 System.Console.WriteLine($"\n\nYou have been beaten and made it to level {GameState.Instance.CurrentStage}");
                 PauseAndClear();
@@ -66,10 +67,10 @@ namespace Stendinator.Console
                         System.Console.WriteLine("Select the preferred active component to attack with:\n");
                         ComponentsWithIndex(activeComponents);
                         var chosenActiveComponent = ReadIndex(activeComponents.Length);
-                        System.Console.WriteLine($"You have chosen {activeComponents[chosenActiveComponent].GetType().Name}\n");
+                        System.Console.WriteLine($"You have chosen {activeComponents[chosenActiveComponent].Instance().GetType().Name}\n");
                         activeComponents[chosenActiveComponent].Activate();
                         System.Console.WriteLine("Enemy stats:");
-                        ((DecoratedCreature)game.CurrentPlanet.CurrentEnemy).Print();
+                        ((ConsoleCreature)game.CurrentPlanet.CurrentEnemy).Print();
                         PauseAndClear();
                     }
                     else
@@ -101,7 +102,7 @@ namespace Stendinator.Console
         {
             //Build head
             System.Console.WriteLine("Lets add a head first (type the id of the preferred head):\n");
-            var headNames = abstractConsoleComponentFactory.GetHeadNames();
+            var headNames = AbstractComponentFactory.GetHeadNames();
             System.Console.WriteLine(NamesToString(headNames));
             var chosenHead = ReadIndex(headNames.Length);
             Builder.AddHead(abstractConsoleComponentFactory.CreateHead(headNames[chosenHead], false));
@@ -110,7 +111,7 @@ namespace Stendinator.Console
 
             //Build body
             System.Console.WriteLine("Add a body (again type the id):\n");
-            var bodyNames = abstractConsoleComponentFactory.GetBodyNames();
+            var bodyNames = AbstractComponentFactory.GetBodyNames();
             System.Console.WriteLine(NamesToString(bodyNames));
             var chosenBody = ReadIndex(bodyNames.Length);
             Builder.AddBody(abstractConsoleComponentFactory.CreateBody(bodyNames[chosenBody], false));
@@ -137,7 +138,7 @@ namespace Stendinator.Console
 
             //Build right leg
             System.Console.WriteLine("Add a right leg:\n");
-            var rightLegNames = abstractConsoleComponentFactory.GetLegNames();
+            var rightLegNames = AbstractComponentFactory.GetLegNames();
             System.Console.WriteLine(NamesToString(rightLegNames));
             var chosenRightLeg = ReadIndex(rightLegNames.Length);
             Builder.AddRightLeg(abstractConsoleComponentFactory.CreateLeg(rightLegNames[chosenRightLeg], false));
@@ -146,7 +147,7 @@ namespace Stendinator.Console
 
             //Build left leg
             System.Console.WriteLine("Add a left leg:\n");
-            var leftLegNames = abstractConsoleComponentFactory.GetLegNames();
+            var leftLegNames = AbstractComponentFactory.GetLegNames();
             System.Console.WriteLine(NamesToString(leftLegNames));
             var chosenLeftLeg = ReadIndex(leftLegNames.Length);
             Builder.AddLeftLeg(abstractConsoleComponentFactory.CreateLeg(leftLegNames[chosenLeftLeg], false));
@@ -173,7 +174,7 @@ namespace Stendinator.Console
             System.Console.WriteLine($"Components:\n");
             System.Console.WriteLine(components.Select(x =>
                 "     " +
-                $"{x.GetType().Name} - PassiveStats (Health: {x.PassiveStats.Health}, Defense: {x.PassiveStats.Defense})\n"
+                $"{x.Instance().GetType().Name} - PassiveStats (Health: {x.Passives.Health}, Defense: {x.Passives.Defense})\n"
             ).Aggregate("", (c, s) => c + s));
         }
 
@@ -185,23 +186,40 @@ namespace Stendinator.Console
             System.Console.WriteLine("Select a component that you would like to use:");
             ComponentsWithIndex(GameState.Instance.Components);
             var chosenComponent = ReadIndex(GameState.Instance.Components.Count);
-            System.Console.WriteLine($"You selected {GameState.Instance.Components[chosenComponent].GetType().Name}");
+            System.Console.WriteLine($"You selected {GameState.Instance.Components[chosenComponent].Instance().GetType().Name}");
             PauseAndClear();
             System.Console.WriteLine("Select a component you want to replace it with:");
             ComponentsWithIndex(_player.Components);
             var componentToReplace = ReadIndex(_player.Components.Length);
-            System.Console.WriteLine($"Component: {_player.Components[componentToReplace].GetType().Name} has been replaced by: {GameState.Instance.Components[chosenComponent].GetType().Name}");
+            System.Console.WriteLine($"Component: {_player.Components[componentToReplace].Instance().GetType().Name} has been replaced by: {GameState.Instance.Components[chosenComponent].Instance().GetType().Name}");
             _player.Components[componentToReplace] = GameState.Instance.Components[chosenComponent];
-            if (_player.Components[componentToReplace].GetType().IsSubclassOf(typeof(ActiveComponent)))
-                ((ActiveComponent) _player.Components[componentToReplace]).ComponentActivated += _player.HandleActivatedComponent;
+            if (_player.Components[componentToReplace].Instance().GetType().IsSubclassOf(typeof(ActiveComponent)))
+                ((ActiveComponent) _player.Components[componentToReplace]).ComponentActivated += _player.Instance().HandleActivatedComponent;
             GameState.Instance.Components.RemoveAt(chosenComponent);
+            PauseAndClear();
+            DropBuff();
+        }
+        
+        /// <summary>
+        /// 10% chance a buff will drop, when dropped adds the buff based on the decorator pattern
+        /// </summary>
+        private static void DropBuff()
+        {
+            var buffDropped = DropRng.Next(1, 11) == 1;
+            if (!buffDropped) return;
+            System.Console.WriteLine("A buff has dropped...");
+            PauseAndClear();
+            System.Console.WriteLine("Select a component that the buff will apply to:");
+            ComponentsWithIndex(_player.Components.Where(c => c.Instance().GetType().IsSubclassOf(typeof(ActiveComponent))));
+            var component = (ActiveComponent)_player.Components.Where(x => x.Instance().GetType().IsSubclassOf(typeof(ActiveComponent))).ElementAt(ReadIndex(_player.Components.Length));
+            _player.BuffComponent(component, DropRng.Next(1, 7));
         }
 
         private static void ComponentsWithIndex(IEnumerable<Component> components)
         {
             System.Console.WriteLine(components.Select((x, i) =>
                 "     " +
-                $"{i}: {x.GetType().Name} - PassiveStats (Health: {x.PassiveStats.Health}, Defense: {x.PassiveStats.Defense})\n"
+                $"{i}: {x.Instance().GetType().Name} - PassiveStats (Health: {x.Instance().Passives.Health}, Defense: {x.Instance().Passives.Defense})\n"
             ).Aggregate("", (c, s2) => c + s2));
         }
 

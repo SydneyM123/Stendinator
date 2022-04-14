@@ -30,14 +30,14 @@ namespace Stendinator.Core
         /// <summary>
         /// Removes the current level when planet is beaten
         /// </summary>
-        public void HandlePlanetIsBeaten(object? sender, EventArgs args)
+        private void HandlePlanetIsBeaten(object? sender, EventArgs args)
         {
             GameState.Instance.CurrentStage++;
             CreateNewLevel();
             PlanetIsBeaten?.Invoke(this, EventArgs.Empty);
         }
-        
-        public void CreateNewLevel()
+
+        private void CreateNewLevel()
         {
             var levelTypes = new[] { nameof(AlienPlanet), nameof(CyborgPlanet) };
             CurrentPlanet = _randomPlanetFactory.Create(levelTypes[_random.Next(levelTypes.Length)], _player);
