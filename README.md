@@ -13,7 +13,4 @@ A game where you fight aliens and Cyborgs (as a Cyborg)!
 
 TODO FOR RESIT:
 
-  - Decorator goed toepassen
-  - Factory method discussiëren
-  - Bugs oplossen in het spel (met name negatieve health)
   - Startdocument updaten (evt. verwerken in een README bestand)
