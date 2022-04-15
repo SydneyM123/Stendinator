@@ -8,23 +8,23 @@ Henk bembom, sydney minnaar en Jordy Neef
 
 # Contents
 
-[1. Idee](#_Toc97297590)
+[1. Idee](#1. Idee)
 
-[2. Werkmethode](#_Toc97297591)
+[2. Werkmethode](#2. Werkmethode)
 
-[3. Ontwerppatronen](#_Toc97297592)
+[3. Ontwerppatronen](#3. Ontwerppatronen)
 
-&emsp;[3.1 Strategy](#_Toc97297593)
+&emsp;[3.1 Strategy](#3.1 Strategy)
 
-&emsp;[3.2 Factory](#_Toc97297594)
+&emsp;[3.2 Factory](#3.2 Factory)
 
-&emsp;[3.3 Builder](#_Toc97297595)
+&emsp;[3.3 Builder](#3.3 Builder)
 
-&emsp;[3.4 Observer](#_Toc97297596)
+&emsp;[3.4 Observer](#3.4 Observer)
 
-&emsp;[3.5 Decorator](#_Toc97297597)
+&emsp;[3.5 Decorator](#3.5 Decorator)
 
-[4 Klassendiagrammen](#_Toc97297598)
+[4 Klassendiagrammen](#4 Klassendiagrammen)
 
 # **1. Het Idee**
 
