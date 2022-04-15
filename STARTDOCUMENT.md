@@ -55,7 +55,7 @@ De projectleden zullen werken in de nieuwste versie van Visual Studio (2022).
 
 Tot slot zal het team de door NHL Stenden gedocumenteerde C# programmeerconventie hanteren om de kwaliteit van de code hoog te houden.
 
-# Design patterns
+## Design patterns
 
 In dit hoofdstuk worden de toegepaste design patterns onderbouwd.
 
@@ -79,7 +79,7 @@ Er zijn situaties waarin meerdere creatures bestaan uit hetzelfde component. Hie
 
 Een component kan krachtiger worden gemaakt door middel van buffs. Deze buffs worden geïnherit van de ActiveComponent klasse (zie klassediagram). Daarnaast is het de bedoeling dat deze buffs zo veel mogelijk kunnen worden gestacked. Een ontwerppatroon die ons bij deze opzet kan helpen is de decorator.
 
-## Klassendiagrammen
+## Klassendiagram
 
 In dit hoofdstuk worden de klassendiagrammen van het ontwerp gevisualiseerd. Daarnaast wordt er ook beschreven welke klassen gerelateerd zijn aan welke ontwerppatronen.
 
