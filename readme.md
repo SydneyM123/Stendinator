@@ -8,17 +8,17 @@ Henk bembom, Sydney Minnaar en Jordy Neef – 2022
 
 ## Contents
 
-[Idee](#Idee)<br />
-[Werkmethode](#Werkmethode)<br />
-[Design patterns](#Design-patterns)<br />
-&emsp;[Strategy](#Strategy)<br />
-&emsp;[Factory](#Factory)<br />
-&emsp;[Builder](#Builder)<br />
-&emsp;[Observer](#Observer)<br />
-&emsp;[Decorator](#Decorator)<br />
-[Klassendiagram](#Klassendiagram)
+[1 Idee](#1-Idee)<br />
+[2 Werkmethode](#2-Werkmethode)<br />
+[3 Design patterns](#3-Design-patterns)<br />
+&emsp;[3.1 Strategy](#3.1-Strategy)<br />
+&emsp;[3.2 Factory](#3.2-Factory)<br />
+&emsp;[3.3 Builder](#3.3-Builder)<br />
+&emsp;[3.4 Observer](#3.4-Observer)<br />
+&emsp;[3.5 Decorator](#3.5-Decorator)<br />
+[4 Klassendiagram](#4-Klassendiagram)
 
-## Idee
+## 1 Idee
 
 Voor de eindopdracht van Design Patterns moet er een softwareproduct worden opgeleverd. Aan de eindopdracht zijn eisen gesteld. Het softwareproduct moet minimaal vier _design patterns_ bevatten. Design patterns zijn software architectonisch van aard om een specifiek probleem in de code op te lossen.
 
@@ -44,7 +44,7 @@ De volgende stappen is de procedure die de speler in de console bij langs gaat:
 4. Versla een planeet (Verhoog het planeetniveau)
 5. Begin opnieuw bij stap 2.
 
-## Werkmethode
+## 2 Werkmethode
 
 De projectgroep bestaat uit drie personen: Henk Bembom, Sydney Minnaar en Jordy Neef. Om het idee te realiseren zal er eerst een klassendiagram moeten worden gemaakt. Tijdens het ontwerpen zal direct rekening worden gehouden met de gekozen ontwerppatronen.
 
@@ -58,31 +58,31 @@ De projectleden zullen werken in de nieuwste versie van Visual Studio (2022).
 
 Tot slot zal het team de door NHL Stenden gedocumenteerde C# programmeerconventie hanteren om de kwaliteit van de code hoog te houden.
 
-## Design patterns
+## 3 Design patterns
 
 In dit hoofdstuk worden de toegepaste design patterns onderbouwd.
 
-### Strategy
+### 3.1 Strategy
 
 Voor het bepalen van het type creature wordt de strategy toegepast, aangezien de verschillende soorten creatures vergelijkbaar met elkaar zijn maar verschillend gedrag hebben. Zo heeft elke creature zijn eigen attacks, en de planeten van elk soort creature net een andere (de-)buff voor de speler heeft.
 
-### Factory
+### 3.2 Factory
 
 De factory method maakt het mogelijk om het planeet object (superclass) creatures aan te laten maken zonder de kennis te hebben van de alien of cyborg (derived classes). Dit zorgt ervoor dat het planeet object geen logica van het creëren van de specifieke objecten, waardoor de klasse niet hoeft worden aangepast als er een nieuwe creature wordt toegevoegd.
 
-### Builder
+### 3.3 Builder
 
 De cyborg bestaat uit veel complexe componenten zoals ledematen. Dit willen we niet in de constructor hebben aangezien deze dan te groot wordt en daarom wordt de builder toegepast. De builder maakt het dan ook mogelijk om de complexe objecten te kunnen creëren. Op deze manier kunnen we de benodigde parameters om tot eenvoudige stappen die achter elkaar uitgevoerd kunnen worden.
 
-### Observer
+### 3.4 Observer
 
 Er zijn situaties waarin meerdere creatures bestaan uit hetzelfde component. Hierdoor wordt dan ook de observer pattern toegepast om de creatures (die bestaan uit de desbetreffende components) op de hoogte te stellen dat ze zijn gebruikt.
 
-### Decorator
+### 3.5 Decorator
 
 Een component kan krachtiger worden gemaakt door middel van buffs. Deze buffs worden geïnherit van de ActiveComponent klasse (zie klassediagram). Daarnaast is het de bedoeling dat deze buffs zo veel mogelijk kunnen worden gestacked. Een ontwerppatroon die ons bij deze opzet kan helpen is de decorator.
 
-## Klassendiagram
+## 4 Klassendiagram
 
 In dit hoofdstuk wordt de klassendiagram van het ontwerp gevisualiseerd. Daarnaast wordt er ook beschreven welke klassen gerelateerd zijn aan welke ontwerppatronen.
 
