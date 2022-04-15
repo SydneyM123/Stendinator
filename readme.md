@@ -13,7 +13,7 @@ Henk bembom, Sydney Minnaar en Jordy Neef – 2022
 3. [Design patterns](#Design-patterns)<br />
 &emsp;3.1 [Strategy](#Strategy)<br />
 &emsp;3.2 [Factory](#Factory)<br />
-&emsp;3.3 [Factory](#Abstract-Factory)<br />
+&emsp;3.3 [Abstract Factory](#Abstract-Factory)<br />
 &emsp;3.4 [Builder](#Builder)<br />
 &emsp;3.5 [Observer](#Observer)<br />
 &emsp;3.6 [Decorator](#Decorator)<br />
