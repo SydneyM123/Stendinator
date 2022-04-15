@@ -14,15 +14,15 @@ Henk bembom, sydney minnaar en Jordy Neef
 
 [3. Ontwerppatronen](#_Toc97297592)
 
-&#09;[3.1 Strategy](#_Toc97297593)
+&nbsp;&nbsp;&nbsp;[3.1 Strategy](#_Toc97297593)
 
-&#09;[3.2 Factory](#_Toc97297594)
+&nbsp;&nbsp;&nbsp;[3.2 Factory](#_Toc97297594)
 
-&#09;[3.3 Builder](#_Toc97297595)
+&nbsp;&nbsp;&nbsp;[3.3 Builder](#_Toc97297595)
 
-&#09;[3.4 Observer](#_Toc97297596)
+&emsp;[3.4 Observer](#_Toc97297596)
 
-&#09;[3.5 Decorator](#_Toc97297597)
+&emsp;[3.5 Decorator](#_Toc97297597)
 
 [4 Klassendiagrammen](#_Toc97297598)
 
