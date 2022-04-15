@@ -11,11 +11,11 @@ Henk bembom, Sydney Minnaar en Jordy Neef – 2022
 1. [Idee](#Idee)<br />
 2. [Werkmethode](#Werkmethode)<br />
 3. [Design patterns](#Design-patterns)<br />
-&emsp;&emsp;3.1 [Strategy](#Strategy)<br />
-&emsp;&emsp;3.2 [Factory](#Factory)<br />
-&emsp;&emsp;3.3 [Builder](#Builder)<br />
-&emsp;&emsp;3.4 [Observer](#Observer)<br />
-&emsp;&emsp;3.5 [Decorator](#Decorator)<br />
+&emsp;3.1 [Strategy](#Strategy)<br />
+&emsp;3.2 [Factory](#Factory)<br />
+&emsp;3.3 [Builder](#Builder)<br />
+&emsp;3.4 [Observer](#Observer)<br />
+&emsp;3.5 [Decorator](#Decorator)<br />
 4. [Klassendiagram](#Klassendiagram)
 
 ## Idee
