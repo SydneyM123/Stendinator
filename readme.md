@@ -8,15 +8,15 @@ Henk bembom, Sydney Minnaar en Jordy Neef – 2022
 
 ## Contents
 
-[Idee](#Idee)<br />
-[Werkmethode](#Werkmethode)<br />
-[Design patterns](#Design-patterns)<br />
-&emsp;&emsp;[Strategy](#Strategy)<br />
-&emsp;&emsp;[Factory](#Factory)<br />
-&emsp;&emsp;[Builder](#Builder)<br />
-&emsp;&emsp;[Observer](#Observer)<br />
-&emsp;&emsp;[Decorator](#Decorator)<br />
-[Klassendiagram](#Klassendiagram)
+1. [Idee](#Idee)<br />
+2. [Werkmethode](#Werkmethode)<br />
+3. [Design patterns](#Design-patterns)<br />
+&emsp;&emsp;3.1 [Strategy](#Strategy)<br />
+&emsp;&emsp;3.2 [Factory](#Factory)<br />
+&emsp;&emsp;3.3 [Builder](#Builder)<br />
+&emsp;&emsp;3.4 [Observer](#Observer)<br />
+&emsp;&emsp;3.5 [Decorator](#Decorator)<br />
+4. [Klassendiagram](#Klassendiagram)
 
 ## Idee
 
