@@ -11,7 +11,7 @@ Henk bembom, Sydney Minnaar en Jordy Neef – 2022
 [1 Idee](#1-Idee)<br />
 [2 Werkmethode](#2-Werkmethode)<br />
 [3 Design patterns](#3-Design-patterns)<br />
-&emsp;&emsp;[3.1 Strategy](#3.1-Strategy)<br />
+&emsp;&emsp;[3.1 Strategy](#3\.1-Strategy)<br />
 &emsp;&emsp;[3.2 Factory](#3.2-Factory)<br />
 &emsp;&emsp;[3.3 Builder](#3.3-Builder)<br />
 &emsp;&emsp;[3.4 Observer](#3.4-Observer)<br />
