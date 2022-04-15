@@ -8,7 +8,7 @@ Henk bembom, sydney minnaar en Jordy Neef
 
 # Contents
 
-[Idee](#Idee)
+[1. Idee](#Idee)
 
 [Werkmethode](#Werkmethode)
 
