@@ -26,7 +26,7 @@ Henk bembom, sydney minnaar en Jordy Neef
 
 [Klassendiagrammen](#4 Klassendiagrammen)
 
-## Idee
+## 1. Idee
 
 Voor de eindopdracht van Design Patterns moet er een softwareproduct worden opgeleverd. Aan de eindopdracht zijn eisen gesteld. Het softwareproduct moet minimaal vier _design patterns_ bevatten. Design patterns zijn software architectonisch van aard om een specifiek probleem in de code op te lossen.
 
