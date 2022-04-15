@@ -1,4 +1,7 @@
-# Start Document Design Patterns
+# Stendinator
+A game where you fight aliens and Cyborgs (as a Cyborg)!
+
+## Start Document Design Patterns
 
 Stendinator the game – VERSIE 2.0<br />
 Henk bembom, Sydney Minnaar en Jordy Neef – 2022
