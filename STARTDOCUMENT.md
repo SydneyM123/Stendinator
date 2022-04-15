@@ -81,7 +81,7 @@ Een component kan krachtiger worden gemaakt door middel van buffs. Deze buffs wo
 
 ## Klassendiagram
 
-In dit hoofdstuk worden de klassendiagrammen van het ontwerp gevisualiseerd. Daarnaast wordt er ook beschreven welke klassen gerelateerd zijn aan welke ontwerppatronen.
+In dit hoofdstuk wordt de klassendiagram van het ontwerp gevisualiseerd. Daarnaast wordt er ook beschreven welke klassen gerelateerd zijn aan welke ontwerppatronen.
 
 ![klassendiagram](RackMultipart20220415-4-1a8t2lf_html_17832d1711ff29b.png)
 
