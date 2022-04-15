@@ -8,23 +8,23 @@ Henk bembom, sydney minnaar en Jordy Neef
 
 # Contents
 
-[1. Idee](#1. Idee)
+1. [Idee](#1. Idee)
 
-[2. Werkmethode](#2. Werkmethode)
+[Werkmethode](#Werkmethode)
 
-[3. Ontwerppatronen](#3. Ontwerppatronen)
+[Ontwerppatronen](#3. Ontwerppatronen)
 
-&emsp;[3.1 Strategy](#3.1 Strategy)
+&emsp;[Strategy](#3.1 Strategy)
 
-&emsp;[3.2 Factory](#3.2 Factory)
+&emsp;[Factory](#3.2 Factory)
 
-&emsp;[3.3 Builder](#3.3 Builder)
+&emsp;[Builder](#3.3 Builder)
 
-&emsp;[3.4 Observer](#3.4 Observer)
+&emsp;[Observer](#3.4 Observer)
 
-&emsp;[3.5 Decorator](#3.5 Decorator)
+&emsp;[Decorator](#3.5 Decorator)
 
-[4 Klassendiagrammen](#4 Klassendiagrammen)
+[Klassendiagrammen](#4 Klassendiagrammen)
 
 # **1. Het Idee**
 
