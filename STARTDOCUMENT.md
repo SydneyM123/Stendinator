@@ -14,17 +14,17 @@ Henk bembom, sydney minnaar en Jordy Neef
 
 [3. Design Patterns](#_Toc97297592)
 
-  --[3.1 Strategy Pattern](#_Toc97297593)
+ [3.1 Strategy Pattern](#_Toc97297593)
 
-  --[3.2 Factory method pattern](#_Toc97297594)
+ [3.2 Factory method pattern](#_Toc97297594)
 
-  --[3.3 Builder Pattern](#_Toc97297595)
+ [3.3 Builder Pattern](#_Toc97297595)
 
-  --[3.4 Observer Pattern](#_Toc97297596)
+ [3.4 Observer Pattern](#_Toc97297596)
 
-  --[3.5 Decorator](#_Toc97297597)
+ [3.5 Decorator](#_Toc97297597)
 
-[4 Klassendiagrammen](#_Toc97297598)
+ [4 Klassendiagrammen](#_Toc97297598)
 
 # **1. Het Idee**
 
