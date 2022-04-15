@@ -7,7 +7,7 @@ Henk bembom, Sydney Minnaar en Jordy Neef – 2022
 
 [Idee](#Idee)<br />
 [Werkmethode](#Werkmethode)<br />
-[Ontwerppatronen](#Ontwerppatronen)<br />
+[Design patterns](#Design-patterns)<br />
 &emsp;[Strategy](#Strategy)<br />
 &emsp;[Factory](#Factory)<br />
 &emsp;[Builder](#Builder)<br />
@@ -55,9 +55,9 @@ De projectleden zullen werken in de nieuwste versie van Visual Studio (2022).
 
 Tot slot zal het team de door NHL Stenden gedocumenteerde C# programmeerconventie hanteren om de kwaliteit van de code hoog te houden.
 
-# Ontwerppatronen
+# Design patterns
 
-In dit hoofdstuk worden de toegepaste ontwerppatronen onderbouwd.
+In dit hoofdstuk worden de toegepaste design patterns onderbouwd.
 
 ### Strategy
 
@@ -83,6 +83,6 @@ Een component kan krachtiger worden gemaakt door middel van buffs. Deze buffs wo
 
 In dit hoofdstuk worden de klassendiagrammen van het ontwerp gevisualiseerd. Daarnaast wordt er ook beschreven welke klassen gerelateerd zijn aan welke ontwerppatronen.
 
-![](RackMultipart20220415-4-1a8t2lf_html_17832d1711ff29b.png)
+![klassendiagram](RackMultipart20220415-4-1a8t2lf_html_17832d1711ff29b.png)
 
 _Figuur 1 Klassendiagram Kern-project_
