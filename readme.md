@@ -13,9 +13,10 @@ Henk bembom, Sydney Minnaar en Jordy Neef – 2022
 3. [Design patterns](#Design-patterns)<br />
 &emsp;3.1 [Strategy](#Strategy)<br />
 &emsp;3.2 [Factory](#Factory)<br />
-&emsp;3.3 [Builder](#Builder)<br />
-&emsp;3.4 [Observer](#Observer)<br />
-&emsp;3.5 [Decorator](#Decorator)<br />
+&emsp;3.3 [Factory](#Abstract Factory)<br />
+&emsp;3.4 [Builder](#Builder)<br />
+&emsp;3.5 [Observer](#Observer)<br />
+&emsp;3.6 [Decorator](#Decorator)<br />
 4. [Klassendiagram](#Klassendiagram)
 
 ## Idee
@@ -69,6 +70,10 @@ Voor het bepalen van het type creature wordt de strategy toegepast, aangezien de
 ### Factory
 
 De factory method maakt het mogelijk om het planeet object (superclass) creatures aan te laten maken zonder de kennis te hebben van de alien of cyborg (derived classes). Dit zorgt ervoor dat het planeet object geen logica van het creëren van de specifieke objecten, waardoor de klasse niet hoeft worden aangepast als er een nieuwe creature wordt toegevoegd.
+
+### Abstract Factory
+
+De abstract factory wordt toegepast voor een familie aan componenten, namelijk de healthy, balanced en sturdy (passive) components.
 
 ### Builder
 
