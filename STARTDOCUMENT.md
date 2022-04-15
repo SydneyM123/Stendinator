@@ -9,21 +9,13 @@ Henk bembom, sydney minnaar en Jordy Neef
 # Contents
 
 [Idee](#Idee)
-
 [Werkmethode](#Werkmethode)
-
 [Ontwerppatronen](#Ontwerppatronen)
-
 &emsp;[Strategy](#Strategy)
-
 &emsp;[Factory](#Factory)
-
 &emsp;[Builder](#Builder)
-
 &emsp;[Observer](#Observer)
-
 &emsp;[Decorator](#Decorator)
-
 [Klassendiagram](#Klassendiagram)
 
 ## Idee
