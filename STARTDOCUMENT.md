@@ -14,7 +14,7 @@ Henk bembom, sydney minnaar en Jordy Neef
 
 [3. Design Patterns](#_Toc97297592)
 
- [3.1 Strategy Pattern](#_Toc97297593)
+&nbsp;[3.1 Strategy Pattern](#_Toc97297593)
 
  [3.2 Factory method pattern](#_Toc97297594)
 
