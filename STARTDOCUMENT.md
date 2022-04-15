@@ -8,25 +8,25 @@ Henk bembom, sydney minnaar en Jordy Neef
 
 # Contents
 
-[1. Idee](#1.-Idee)
+[Idee](#Idee)
 
 [Werkmethode](#Werkmethode)
 
-[Ontwerppatronen](#3. Ontwerppatronen)
+[Ontwerppatronen](#Ontwerppatronen)
 
-&emsp;[Strategy](#3.1 Strategy)
+&emsp;[Strategy](#Strategy)
 
-&emsp;[Factory](#3.2 Factory)
+&emsp;[Factory](#Factory)
 
-&emsp;[Builder](#3.3 Builder)
+&emsp;[Builder](#Builder)
 
-&emsp;[Observer](#3.4 Observer)
+&emsp;[Observer](#Observer)
 
-&emsp;[Decorator](#3.5 Decorator)
+&emsp;[Decorator](#Decorator)
 
-[Klassendiagrammen](#4 Klassendiagrammen)
+[Klassendiagram](#Klassendiagram)
 
-## 1. Idee
+## Idee
 
 Voor de eindopdracht van Design Patterns moet er een softwareproduct worden opgeleverd. Aan de eindopdracht zijn eisen gesteld. Het softwareproduct moet minimaal vier _design patterns_ bevatten. Design patterns zijn software architectonisch van aard om een specifiek probleem in de code op te lossen.
 
@@ -38,8 +38,7 @@ Als de speler tevreden is met zijn cyborg, dan begint het spel. De speler wordt 
 
 Wanneer de speler een vijand verslaat, krijgt hij resources om ledematen te upgraden. Afhankelijk van het type ledemaat dat wordt geüpgraded kunnen bepaalde statistieken van de cyborg aangepast worden.
 
-  1.
-## **Stappen die worden doorlopen bij het spel**
+### **Stappen die worden doorlopen bij het spel**
 
 De volgende stappen is de procedure die de speler in de console bij langs gaat:
 
@@ -53,7 +52,7 @@ De volgende stappen is de procedure die de speler in de console bij langs gaat:
 4. Versla een planeet (Verhoog het planeetniveau)
 5. Begin opnieuw bij stap 2.
 
-# 2. Werkmethode
+## Werkmethode
 
 De projectgroep bestaat uit drie personen: Henk Bembom, Sydney Minnaar en Jordy Neef. Om het idee te realiseren zal er eerst een klassendiagram moeten worden gemaakt. Tijdens het ontwerpen zal direct rekening worden gehouden met de gekozen ontwerppatronen.
 
@@ -67,31 +66,31 @@ De projectleden zullen werken in de nieuwste versie van Visual Studio (2022).
 
 Tot slot zal het team de door NHL Stenden gedocumenteerde C# programmeerconventie hanteren om de kwaliteit van de code hoog te houden.
 
-# 3. Ontwerppatronen
+# Ontwerppatronen
 
 In dit hoofdstuk worden de toegepaste ontwerppatronen onderbouwd.
 
-## 3.1 Strategy
+### Strategy
 
 Voor het bepalen van het type creature wordt de strategy toegepast, aangezien de verschillende soorten creatures vergelijkbaar met elkaar zijn maar verschillend gedrag hebben. Zo heeft elke creature zijn eigen attacks, en de planeten van elk soort creature net een andere (de-)buff voor de speler heeft.
 
-## 3.2 Factory
+### Factory
 
 De factory method maakt het mogelijk om het planeet object (superclass) creatures aan te laten maken zonder de kennis te hebben van de alien of cyborg (derived classes). Dit zorgt ervoor dat het planeet object geen logica van het creëren van de specifieke objecten, waardoor de klasse niet hoeft worden aangepast als er een nieuwe creature wordt toegevoegd.
 
-## 3.3 Builder
+### Builder
 
 De cyborg bestaat uit veel complexe componenten zoals ledematen. Dit willen we niet in de constructor hebben aangezien deze dan te groot wordt en daarom wordt de builder toegepast. De builder maakt het dan ook mogelijk om de complexe objecten te kunnen creëren. Op deze manier kunnen we de benodigde parameters om tot eenvoudige stappen die achter elkaar uitgevoerd kunnen worden.
 
-## 3.4 Observer
+### Observer
 
 Er zijn situaties waarin meerdere creatures bestaan uit hetzelfde component. Hierdoor wordt dan ook de observer pattern toegepast om de creatures (die bestaan uit de desbetreffende components) op de hoogte te stellen dat ze zijn gebruikt.
 
-## 3.5 Decorator
+### Decorator
 
 Een component kan krachtiger worden gemaakt door middel van buffs. Deze buffs worden geïnherit van de ActiveComponent klasse (zie klassediagram). Daarnaast is het de bedoeling dat deze buffs zo veel mogelijk kunnen worden gestacked. Een ontwerppatroon die ons bij deze opzet kan helpen is de decorator.
 
-# 4 Klassendiagrammen
+## Klassendiagrammen
 
 In dit hoofdstuk worden de klassendiagrammen van het ontwerp gevisualiseerd. Daarnaast wordt er ook beschreven welke klassen gerelateerd zijn aan welke ontwerppatronen.
 
