@@ -1,10 +1,7 @@
 # Start Document Design Patterns
 
-Stendinator the game – VERSIE 2.0
-
-Henk bembom, sydney minnaar en Jordy Neef
-
-2022
+Stendinator the game – VERSIE 2.0<br />
+Henk bembom, Sydney Minnaar en Jordy Neef – 2022
 
 # Contents
 
